@@ -4,7 +4,7 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Chuyển camera trước/sau
+Switch between front/back camera
 
 ```js
 import React, { useEffect, useRef } from "react";

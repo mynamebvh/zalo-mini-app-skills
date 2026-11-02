@@ -8,16 +8,16 @@
 import { openPermissionSetting } from "zmp-sdk";
 ```
 
-API mở cửa sổ Quản lý quyền mà người dùng đã cấp cho Mini App. Người dùng có thể thay đổi các thiết lập quyền (cấp thêm hoặc thu hồi) tại đây.
+API that opens the Permission Management window showing the permissions the user has granted to the Mini App. Users can change permission settings (grant more or revoke) here.
 
 ![openpermissionsetting](https://docs.zaloplatforms.com/assets/MA/img/api/openPermissionSetting/permission_setting_screen.jpeg)
 
-## Ví dụ
+## Example
 
-Mở cửa sổ cài đặt quyền:
+Open the permission settings window:
 
 ```ts
 await openPermissionSetting();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).

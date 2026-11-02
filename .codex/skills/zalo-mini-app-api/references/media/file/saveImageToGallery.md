@@ -8,20 +8,20 @@
 import { saveImageToGallery } from "zmp-sdk";
 ```
 
-Lưu ảnh vào thư viện media của thiết bị.
+Saves an image to the device's media library.
 
-## Ví dụ
+## Example
 
-Thông báo một lần sau khi lưu ảnh xong:
+Notify once after the image has been saved:
 
 ```ts
 await saveImageToGallery({
   imageUrl: "https://sample-videos.com/img/Sample-jpg-image-50kb.jpg",
 });
-console.log("Lưu ảnh thành công!");
+console.log("Image saved successfully!");
 ```
 
-Xử lý lỗi khi lưu ảnh:
+Handle errors when saving the image:
 
 ```ts
 try {
@@ -33,26 +33,26 @@ try {
 }
 ```
 
-Báo cáo tiến độ lưu ảnh:
+Report saving progress:
 
 ```ts
 await saveImageToGallery({
   imageUrl: "https://sample-videos.com/img/Sample-jpg-image-50kb.jpg",
   onProgress: (progress) => {
-    console.log(`Đã lưu được ${progress}%...`);
+    console.log(`Saved ${progress}%...`);
   },
 });
-console.log("Lưu ảnh thành công!");
+console.log("Image saved successfully!");
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| imageBase64Data | `string` | No | Giá trị base64 của ảnh cần lưu. |
-| imageUrl | `string` | No | Đường dẫn của ảnh cần lưu. |
-| onProgress | `(progress: number) => void` | No | Callback function tiến độ tải file. Với `progress` là số từ 0 đến 100%. |
+| imageBase64Data | `string` | No | Base64 value of the image to save. |
+| imageUrl | `string` | No | Path of the image to save. |
+| onProgress | `(progress: number) => void` | No | Callback function for file download progress. `progress` is a number from 0 to 100%. |

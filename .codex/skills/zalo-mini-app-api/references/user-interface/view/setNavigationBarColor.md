@@ -7,11 +7,11 @@
 import { setNavigationBarColor } from "zmp-sdk";
 ```
 
-API đặt lại màu thanh điều hướng của trang hiện tại.
+API that sets the navigation bar color of the current page.
 
-## Ví dụ
+## Example
 
-Đổi màu thanh điều hướng thành màu đen:
+Change the navigation bar color to black:
 
 ```ts
 setNavigationBarColor({
@@ -19,14 +19,14 @@ setNavigationBarColor({
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| color | `string` | Yes | Giá trị màu, có giá trị hợp lệ là màu thập lục phân, ví dụ `#000000`. Nếu giá trị này rỗng thì thanh điều hướng sẽ bị ẩn. |
-| textColor | `"black" \| "white"` | No | Màu của text và icon trên thanh action bar và status bar. Trên thiết bị iOS, chỉ có thể thay đổi màu icon ở thanh action bar. |
-| statusBarColor | `string` | No | Màu của thanh status bar khi thanh điều hướng bị ẩn, có giá trị hợp lệ là màu thập lục phân, ví dụ `#000000`. |
+| color | `string` | Yes | Color value, valid values are hexadecimal colors, for example `#000000`. If this value is empty, the navigation bar will be hidden. |
+| textColor | `"black" \| "white"` | No | The color of the text and icons on the action bar and status bar. On iOS devices, only the icon color on the action bar can be changed. |
+| statusBarColor | `string` | No | The color of the status bar when the navigation bar is hidden, valid values are hexadecimal colors, for example `#000000`. |

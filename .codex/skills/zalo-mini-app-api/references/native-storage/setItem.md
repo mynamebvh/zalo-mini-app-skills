@@ -8,23 +8,23 @@
 import { nativeStorage } from "zmp-sdk";
 ```
 
-Lưu trữ dữ liệu xuống bộ đệm theo cơ chế đồng bộ. Dữ liệu sẽ được lưu ở thiết bị của người dùng. Dữ liệu cũ nhất sẽ bị xoá nếu bộ nhớ đạt giới hạn (5MB).
+Stores data to the cache synchronously. The data is saved on the user's device. The oldest data is deleted if the memory limit (5MB) is reached.
 
-## Ví dụ
+## Example
 
-Lưu từ khoá tìm kiếm vào bộ nhớ:
+Save a search keyword to memory:
 
 ```ts
 nativeStorage.setItem("recentSearch", keyword);
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền trực tiếp hai tham số `key` và `value` kiểu `string` vào API:
+Pass the two parameters `key` and `value` of type `string` directly to the API:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| key | `string` | Yes | Tên khóa mà bạn muốn tạo/cập nhật. |
-| value | `string` | Yes | Giá trị mà bạn muốn cung cấp cho khóa mà bạn đang tạo/cập nhật. |
+| key | `string` | Yes | The name of the key you want to create/update. |
+| value | `string` | Yes | The value you want to provide for the key you are creating/updating. |

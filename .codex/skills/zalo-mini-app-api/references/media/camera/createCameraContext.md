@@ -4,18 +4,17 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Nhằm đơn giản hóa cách truy cập và sử dụng camera/micro trên nền tảng MiniApp, SDK cung cấp class **ZMACamera** với các
-chức năng như thay đổi động thông số streaming, tắt/bật camera/micro, chuyển camera, chụp ảnh với cấu hình tùy chọn, và
-lắng nghe các sự kiện liên quan đến camera (vd: frame realtime callback khi streaming camera).
+To simplify how the camera/microphone is accessed and used on the Mini App platform, the SDK provides the **ZMACamera** class with
+features such as dynamically changing streaming parameters, turning the camera/microphone on or off, switching cameras, taking photos with custom configuration, and
+listening for camera-related events (e.g., realtime frame callback while streaming the camera).
 
-**Lưu ý**:
+**Note**:
 
-- Các hàm thay đổi trạng thái streaming (start, pause, resume, updateMediaConstraints, setDeviceId, flip) sẽ trả về một
-  Promise, bạn cần sử dụng await hoặc .then() để đảm bảo không xung đột trạng thái dẫn đến các chức năng hoạt động không
-  như mong đợi.
-- Sau khi sử dụng xong, bạn nên gọi hàm [stop](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/stop) để giải phóng camera/micro. Vì lý do privacy của
-  user khi app xuống background sẽ stop streaming, nếu app muốn tiếp tục streaming khi quay lại foreground thì cần gọi
-  lại hàm [start](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/start).
+- The functions that change the streaming state (start, pause, resume, updateMediaConstraints, setDeviceId, flip) return a
+  Promise, so you need to use await or .then() to avoid state conflicts that cause the functions to behave unexpectedly.
+- When you are done, you should call the [stop](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/stop) function to release the camera/microphone. For user privacy reasons,
+  streaming stops when the app goes to the background, so if the app wants to continue streaming when it returns to the foreground, it needs to call
+  the [start](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/start) function again.
 
 ## Parameters
 
@@ -23,25 +22,25 @@ lắng nghe các sự kiện liên quan đến camera (vd: frame realtime callba
 
 | Property | Type | Default | Required | Description | Minimum Version |
 | --- | --- | --- | --- | --- | --- |
-| videoElement | HTMLVideoElement |  | true | thẻ video chính để render stream từ camera |  |
-| mediaConstraints | [MediaConstraints](#mediaconstraints-object) | `width`: 1024,   `height`: 768,   `facingMode`: FacingMode.FRONT,   `mirrored`: false,   `audio`: false,   `video`: true |  | Cấu hình khởi tạo streaming. Mặc định chỉ lấy stream từ camera, |  |
+| videoElement | HTMLVideoElement |  | true | the main video element used to render the stream from the camera |  |
+| mediaConstraints | [MediaConstraints](#mediaconstraints-object) | `width`: 1024,   `height`: 768,   `facingMode`: FacingMode.FRONT,   `mirrored`: false,   `audio`: false,   `video`: true |  | Configuration for initializing streaming. By default, only the stream from the camera is captured, |  |
 
 ### MediaConstraints *object*
 
 | Property | Type | Default | Required | Description | Minimum Version |
 | --- | --- | --- | --- | --- | --- |
-| width | number |  |  | Chiều rộng của video |  |
-| height | number |  |  | Chiều cao của video |  |
-| facingMode | [FacingMode](#facingmode-enum) |  |  | Hướng camera |  |
-| deviceId | string |  |  | deviceId camera cần sử dụng. DeviceId lấy từ [getCameraList](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/getCameraList) |  |
-| video | boolean |  |  | Bật/tắt stream camera |  |
-| audio | boolean |  |  | Bật/tắt stream micro |  |
-| mirrored | boolean |  |  | Chế độ gương, lật ngược ảnh |  |
+| width | number |  |  | Width of the video |  |
+| height | number |  |  | Height of the video |  |
+| facingMode | [FacingMode](#facingmode-enum) |  |  | Camera direction |  |
+| deviceId | string |  |  | deviceId of the camera to use. The DeviceId is obtained from [getCameraList](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/getCameraList) |  |
+| video | boolean |  |  | Turn the camera stream on/off |  |
+| audio | boolean |  |  | Turn the microphone stream on/off |  |
+| mirrored | boolean |  |  | Mirror mode, flips the image |  |
 
 ### FacingMode *enum*
 
-- **FRONT**: Camera trước
-- **BACK**: Camera sau
+- **FRONT**: Front camera
+- **BACK**: Back camera
 
 ## Return Values
 
@@ -49,20 +48,20 @@ lắng nghe các sự kiện liên quan đến camera (vd: frame realtime callba
 
 | Property | Type | Description | Minimum Version |
 | --- | --- | --- | --- |
-| [start](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/start) | function | Bắt đầu streaming từ camera |  |
-| [stop](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/stop) | function | Kết thúc streaming từ camera |  |
-| [pause](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/pause) | function | Tạm dừng streaming |  |
-| [resume](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/resume) | function | Tiếp tục lại streaming |  |
-| [isUsing](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/isUsing) | function | Kiểm tra trạng thái streaming |  |
-| [updateMediaConstraints](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/updateMediaConstraints) | function | Update cấu hình streaming |  |
-| [takePhoto](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/takePhoto) | function | Chụp ảnh từ camera |  |
-| [flip](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/flip) | function | Chuyển camera trước/sau |  |
-| [setMirror](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/setMirror) | function | Bật/tắt chế độ gương cho ảnh. |  |
-| [getCameraList](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/getCameraList) | function | Lấy danh sách camera mà thiết bị có thể sử dụng |  |
-| [getSelectedDeviceId](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/getSelectedDeviceId) | function | Lấy deviceId của camera đang active |  |
-| [setDeviceId](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/setDeviceId) | function | Chuyển camera active bằng deviceId |  |
-| [on](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/on) | function | Lắng nghe các sự kiện CameraEvents |  |
-| [off](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/off) | function | Ngừng lắng nghe sự kiện CameraEvents |  |
+| [start](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/start) | function | Start streaming from the camera |  |
+| [stop](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/stop) | function | Stop streaming from the camera |  |
+| [pause](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/pause) | function | Pause streaming |  |
+| [resume](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/resume) | function | Resume streaming |  |
+| [isUsing](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/isUsing) | function | Check the streaming status |  |
+| [updateMediaConstraints](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/updateMediaConstraints) | function | Update the streaming configuration |  |
+| [takePhoto](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/takePhoto) | function | Take a photo from the camera |  |
+| [flip](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/flip) | function | Switch between the front/back camera |  |
+| [setMirror](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/setMirror) | function | Turn mirror mode on/off for the image. |  |
+| [getCameraList](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/getCameraList) | function | Get the list of cameras available on the device |  |
+| [getSelectedDeviceId](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/getSelectedDeviceId) | function | Get the deviceId of the active camera |  |
+| [setDeviceId](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/setDeviceId) | function | Switch the active camera by deviceId |  |
+| [on](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/on) | function | Listen for CameraEvents |  |
+| [off](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/off) | function | Stop listening for CameraEvents |  |
 
 ## Sample Code
 

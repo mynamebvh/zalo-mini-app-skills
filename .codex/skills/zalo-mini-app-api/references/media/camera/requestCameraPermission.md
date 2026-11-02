@@ -4,7 +4,7 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.8.0
 
-Cho phép ứng dụng yêu cầu device cấp quyền truy cập camera. Lưu ý: đối với IOS, chỉ cấp quyền lần đầu khi cài app Zalo. Nếu user không cấp quyền trong lần đầu hiển thị, hoặc thu hồi quyền trong quá trình sử dụng thì lần gọi sau cũng KHÔNG hiển thị lại. Nếu user muốn cấp quyền lại phải vào setting của device.
+Allows the app to request that the device grant camera access. Note: on iOS, permission is granted only the first time after Zalo is installed. If the user does not grant permission the first time it is shown, or revokes the permission while using the app, subsequent calls will also NOT show it again. If the user wants to grant permission again, they must go to the device settings.
 
 ## Parameters
 
@@ -12,8 +12,8 @@ Cho phép ứng dụng yêu cầu device cấp quyền truy cập camera. Lưu �
 
 | Property | Type | Default | Required | Description | Minimum Version |
 | --- | --- | --- | --- | --- | --- |
-| success | function |  |  | Callback function khi gọi api thành công |  |
-| fail | function |  |  | Callback function khi gọi api thất bại |  |
+| success | function |  |  | Callback function when the api call succeeds |  |
+| fail | function |  |  | Callback function when the api call fails |  |
 
 ## Return Values
 
@@ -21,8 +21,8 @@ Cho phép ứng dụng yêu cầu device cấp quyền truy cập camera. Lưu �
 
 | Property | Type | Description | Minimum Version |
 | --- | --- | --- | --- |
-| userAllow | boolean | Nhận các giá trị sau:  - true: user cấp quyền - false: user không cấp quyền |  |
-| message | string | Mô tả trạng thái |  |
+| userAllow | boolean | Takes the following values:  - true: the user grants permission - false: the user does not grant permission |  |
+| message | string | Description of the status |  |
 
 ## Sample Code
 
@@ -32,17 +32,17 @@ import { requestCameraPermission } from "zmp-sdk/apis";
 requestCameraPermission({
   success: ({ userAllow, message }) => {
     if (userAllow) {
-      // được phép sử dụng camera
+      // allowed to use the camera
     }
   },
   fail: (err) => {
-    // xử lý khi gọi api thất bại
+    // handle the api call failure
     console.log(err);
   }
 });
 ```
 
-Hoặc
+Or
 
 ```jsx
 import { requestCameraPermission } from "zmp-sdk/apis";
@@ -51,10 +51,10 @@ const requestCamera = async () => {
   try {
     const { userAllow, message } = await requestCameraPermission({});
     if (userAllow) {
-      // được phép sử dụng camera
+      // allowed to use the camera
     }
   } catch (error) {
-    // xử lý khi gọi api thất bại
+    // handle the api call failure
     console.log(error);
   }
 };

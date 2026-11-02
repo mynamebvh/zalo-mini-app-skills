@@ -7,46 +7,46 @@
 import { getLocation } from "zmp-sdk";
 ```
 
-API truy xuất vị trí hiện tại của người dùng. Khi gọi API, một thông báo xin cấp quyền sẽ được hiển thị. Mini App chỉ lấy được thông tin vị trí nếu người dùng đồng ý cấp quyền chia sẻ vị trí.
+API to retrieve the user's current location. When the API is called, a permission request notification will be displayed. The Mini App can only obtain location information if the user agrees to grant location sharing permission.
 
-Lưu ý, để giúp các nhà phát triển Mini App sử dụng flow xin quyền một cách hiệu quả, cũng như phù hợp với [chính sách của Zalo Mini App điều 3.3.4](https://mini.zalo.me/documents/zalo-mini-app-developer-program-agreement/#33-api-quy%E1%BB%81n-truy-c%E1%BA%ADp), Mini App Team đã đưa ra một số gợi ý thiết kế trải nghiệm như thông tin bên dưới. Nhà phát triển cần giải thích rõ ràng và trực quan mục đích xin quyền để người dùng dễ dàng hiểu và đồng ý cung cấp thông tin.
+Note, to help Mini App developers use the permission request flow effectively, as well as in accordance with [Zalo Mini App policy section 3.3.4](https://mini.zalo.me/documents/zalo-mini-app-developer-program-agreement/#33-api-quy%E1%BB%81n-truy-c%E1%BA%ADp), the Mini App Team has provided some experience design suggestions as described below. Developers need to clearly and visually explain the purpose of the permission request so that users can easily understand and agree to provide information.
 
 ![Flow request location](https://docs.zaloplatforms.com/assets/images/do-00707feac8c7ccfeacb3b41f4134ad10.png)
 
-Nhằm đảm bảo trải nghiệm thoải mái của người dùng Mini App, chúng tôi sẽ từ chối xét duyệt cho những Mini App có luồng xin cấp quyền chưa rõ ràng, không nêu được mục đích xin quyền đến người dùng. Tham khảo một số trường hợp vi phạm như bên dưới:
+To ensure a comfortable experience for Mini App users, we will reject approval for Mini Apps whose permission request flow is unclear and does not state the purpose of the permission request to users. Refer to some violation cases below:
 
 ![Flow request location reject](https://docs.zaloplatforms.com/assets/images/dont-875685f550af13319c676137ac0ed2ee.png)
 
-## Mô tả luồng truy xuất thông tin
+## Information retrieval flow description
 
 ![getLocation](https://docs.zaloplatforms.com/assets/MA/img/api/flow-request-permission.jpeg)
 
-## Ví dụ
+## Example
 
-1. Ở Zalo Mini App, gọi API này để lấy token vị trí:
+1. In the Zalo Mini App, call this API to get the location token:
 
 ```ts
 const { token } = await getLocation();
 ```
 
-2. Dùng fetch hoặc axios để gửi token này lên server. Nếu không, bạn sẽ bị [lỗi khi gọi các API Server-Server từ Mini App](https://mini.zalo.me/community/9107262438710014159/loi-khi-goi-cac-api-server-server-tu-mini-app).
-3. Server chuyển đổi token thành thông tin vị trí và trả về cho Mini App theo [hướng dẫn](#token-to-location).
+2. Use fetch or axios to send this token to the server. Otherwise, you will get [errors when calling Server-Server APIs from the Mini App](https://mini.zalo.me/community/9107262438710014159/loi-khi-goi-cac-api-server-server-tu-mini-app).
+3. The server converts the token into location information and returns it to the Mini App according to the [instructions](#token-to-location).
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<GetLocationReturns>` chứa chứa token vị trí.
+Returns `Promise<GetLocationReturns>` containing the location token.
 
 ### GetLocationReturns
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| token | `string` | No | Là một chuỗi ký tự dùng để truy xuất thông tin vị trí thông qua server. Mỗi Token được cung cấp, bạn sẽ có thể truy xuất thông tin được 1 lần với thời gian hết hạn sau 2 phút. |
+| token | `string` | No | A string used to retrieve location information through the server. For each Token provided, you can retrieve the information once, with an expiration time after 2 minutes. |
 
-## Hướng dẫn chuyển đổi token thành thông tin vị trí người dùng
+## Guide to converting a token into user location information
 
-Sử dụng **token** vừa nhận được để truy xuất thông tin vị trí người dùng từ **Server** của bạn thông qua Zalo Open API, vui lòng tham khảo code mẫu bên dưới:
+Use the **token** you just received to retrieve the user's location information from your **Server** through the Zalo Open API; please refer to the sample code below:
 
 ```bash
 curl --location --request GET <https://graph.zalo.me/v2.0/me/info>
@@ -55,13 +55,13 @@ curl --location --request GET <https://graph.zalo.me/v2.0/me/info>
 --header **secret_key: <your zalo app secret key>**
 ```
 
-Mô tả các tham số cần sử dụng:
+Description of the parameters to use:
 
-- **access\_token**: truy xuất thông qua API [sdk.getAccessToken](https://docs.zaloplatforms.com/docs/MA/api/user/user-information/getAccessToken)
-- **code**: giá trị là token bạn nhận được khi gọi API lấy vị trí trên phiên bản Zalo
-- **secret\_key**: Khoá bí mật của Zalo App, truy cập <https://developers.zalo.me/>, phần Quản lý ứng dụng tương ứng để truy xuất thông tin
+- **access\_token**: retrieved through the [sdk.getAccessToken](https://docs.zaloplatforms.com/docs/MA/api/user/user-information/getAccessToken) API
+- **code**: the value is the token you received when calling the location retrieval API on the Zalo version
+- **secret\_key**: The secret key of the Zalo App; go to <https://developers.zalo.me/>, the corresponding App Management section, to retrieve the information
 
-Ví dụ kết quả trả về:
+Example returned result:
 
 ```json
 {

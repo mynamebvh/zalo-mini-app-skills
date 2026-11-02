@@ -8,11 +8,11 @@
 import { openPhone } from "zmp-sdk";
 ```
 
-API cho phép mở màn hình cuộc gọi với một số điện thoại cụ thể.
+API that allows opening the call screen with a specific phone number.
 
-## Ví dụ
+## Example
 
-Mở màn hình cuộc gọi với số điện thoại cụ thể:
+Open the call screen with a specific phone number:
 
 ```ts
 await openPhone({
@@ -20,7 +20,7 @@ await openPhone({
 });
 ```
 
-Số điện thoại có thể bắt đầu bằng mã quốc tế:
+The phone number can start with an international code:
 
 ```ts
 await openPhone({
@@ -28,12 +28,12 @@ await openPhone({
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| phoneNumber | `string` | Yes | Số điện thoại cần gọi. |
+| phoneNumber | `string` | Yes | The phone number to call. |

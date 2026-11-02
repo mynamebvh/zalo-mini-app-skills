@@ -4,7 +4,7 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Bật/tắt chế độ gương cho ảnh.
+Enable/disable mirror mode for images.
 
 | Property | Type | Default | Required | Description | Minimum Version |
 | --- | --- | --- | --- | --- | --- |

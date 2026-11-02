@@ -4,13 +4,13 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Ngừng lắng nghe các sự kiện từ camera
+Stop listening for camera events
 
 ### off(eventName)
 
-- eventName <[**CameraEvents**](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/CameraEvents)>: Tên của sự kiện
+- eventName <[**CameraEvents**](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/CameraEvents)>: Event name
 
-Xoá tất cả hàm xử lý đã đăng ký cho sự kiện [**CameraEvents**](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/CameraEvents).
+Remove all handlers registered for the [**CameraEvents**](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/CameraEvents) event.
 
 ```js
 import { CameraEvents } from "zmp-sdk/apis";

@@ -4,13 +4,13 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Chuyển camera active bằng deviceId
+Switch the active camera using deviceId
 
 ## Parameters
 
 | Property | Type | Default | Required | Description | Minimum Version |
 | --- | --- | --- | --- | --- | --- |
-| deviceId | string |  | true | DeviceId lấy từ [getCameraList](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/getCameraList) |  |
+| deviceId | string |  | true | DeviceId obtained from [getCameraList](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/getCameraList) |  |
 
 ```js
 import React, { useEffect, useRef, useState } from "react";
@@ -68,7 +68,7 @@ const HomePage = () => {
       {
         <Box className="mb-2" flex alignContent={"center"}>
           <Select
-            label="Danh sách camera"
+            label="Camera list"
             value={deviceId}
             defaultValue={deviceId}
             onChange={(e) => {

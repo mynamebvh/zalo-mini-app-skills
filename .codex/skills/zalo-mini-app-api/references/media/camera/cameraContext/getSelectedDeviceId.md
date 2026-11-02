@@ -4,7 +4,7 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Lấy deviceId của camera đang active
+Get the deviceId of the currently active camera
 
 ```js
 import React, { useEffect, useRef, useState } from "react";
@@ -62,7 +62,7 @@ const HomePage = () => {
       {
         <Box className="mb-2" flex alignContent={"center"}>
           <Select
-            label="Danh sách camera"
+            label="Camera list"
             value={deviceId}
             defaultValue={deviceId}
             onChange={(e) => {

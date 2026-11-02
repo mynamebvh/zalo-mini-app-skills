@@ -8,11 +8,11 @@
 import { chooseImage } from "zmp-sdk";
 ```
 
-API chọn hình ảnh từ album hoặc camera.
+API for choosing images from the album or camera.
 
-## Ví dụ
+## Example
 
-Chụp hình ảnh từ camera trước:
+Take a photo with the front camera:
 
 ```ts
 const { filePaths } = await chooseImage({
@@ -21,7 +21,7 @@ const { filePaths } = await chooseImage({
 });
 ```
 
-Chụp hình ảnh từ camera sau:
+Take a photo with the back camera:
 
 ```ts
 const { filePaths } = await chooseImage({
@@ -30,7 +30,7 @@ const { filePaths } = await chooseImage({
 });
 ```
 
-Chọn nhiều hình ảnh để viết đánh giá sản phẩm:
+Choose multiple images to write a product review:
 
 ```ts
 const { filePaths } = await chooseImage({
@@ -39,32 +39,32 @@ const { filePaths } = await chooseImage({
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| sourceType | `("album" \| "camera")[]` | No | Nguồn chọn hình ảnh. Có thể chọn từ album/tệp (`album`), chụp ảnh mới từ camera (`camera`), hoặc cả hai. |
-| cameraType | `"back" \| "front"` | No | Xác định camera cần mở là camera trước hay sau. |
-| count | `number` | No | Số lượng hình ảnh tối đa có thể chọn. |
+| sourceType | `("album" \| "camera")[]` | No | Source for choosing images. You can choose from the album/files (`album`), take a new photo with the camera (`camera`), or both. |
+| cameraType | `"back" \| "front"` | No | Specifies whether the front or back camera should be opened. |
+| count | `number` | No | Maximum number of images that can be selected. |
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<ChooseImageReturns>` chứa chứa đường dẫn tới hình ảnh đã chọn.
+The API returns `Promise<ChooseImageReturns>` containing the paths to the selected images.
 
 ### ChooseImageReturns
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| filePaths | `string[]` | No | Đường dẫn các file đã chọn. |
-| tempFiles | `TempFile[]` | No | Thông tin các temp files. |
+| filePaths | `string[]` | No | Paths of the selected files. |
+| tempFiles | `TempFile[]` | No | Information about the temp files. |
 
 ### TempFile
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| path | `string` | No | Đường dẫn các temp file đã chọn. |
-| size | `number` | No | Kích thước các temp file đã chọn. |
+| path | `string` | No | Paths of the selected temp files. |
+| size | `number` | No | Sizes of the selected temp files. |

@@ -8,34 +8,34 @@
 import { getSetting } from "zmp-sdk";
 ```
 
-API lấy thông tin cài đặt hiện tại của người dùng.
+API that gets the user's current settings.
 
-## Ví dụ
+## Example
 
-Lấy thông tin cài đặt hiện tại của người dùng:
+Get the user's current settings:
 
 ```ts
 const { authSetting } = await getSetting();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<GetSettingReturn>` chứa chứa thông tin cài đặt hiện tại của người dùng.
+Returns `Promise<GetSettingReturn>` containing the user's current settings.
 
 ### GetSettingReturn
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| authSetting | `AuthorizeType` | No | Thông tin cấp quyền, tham khảo bảng [Scopes](#scopes). Với các scope có giá trị trả về là `true`, tương ứng với việc người dùng đã cấp quyền sử dụng API trước đó, Mini Apps có thể truy xuất thông tin một cách trực tiếp. |
+| authSetting | `AuthorizeType` | No | Permission info; see the [Scopes](#scopes) table. For scopes whose returned value is `true`, meaning the user has previously granted permission to use the API, the Mini App can access the information directly. |
 
 ## Scopes
 
 | Scope | Corresponding APIs | Description |
 | --- | --- | --- |
-| scope.userInfo | `getUserInfo` | Thông tin user (tên, avatar...) |
-| scope.userLocation | `getLocation` | Thông tin vị trí user |
-| scope.userPhonenumber | `getPhoneNumber` | Số điện thoại |
+| scope.userInfo | `getUserInfo` | User information (name, avatar...) |
+| scope.userLocation | `getLocation` | User location information |
+| scope.userPhonenumber | `getPhoneNumber` | Phone number |
 | scope.camera | `createCameraContext` | Camera |
 | scope.micro | `createCameraContext` | Micro |

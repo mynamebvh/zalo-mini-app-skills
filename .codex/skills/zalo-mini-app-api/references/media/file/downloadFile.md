@@ -8,56 +8,56 @@
 import { downloadFile } from "zmp-sdk";
 ```
 
-API hỗ trợ tải file về thiết bị, kích thước file được quy định như sau:
+API that supports downloading files to the device; the file size limits are as follows:
 
-| Hệ máy | Kích thước tối đa |
+| OS | Maximum size |
 | --- | --- |
-| Android | không quy định |
+| Android | no limit |
 | iOS | 100Mb |
 
-Hỗ trợ giao thức tải file `https://` với các định dạng được liệt kê bên dưới:
+Supports the `https://` file download protocol with the formats listed below:
 
-## Định dạng file được hỗ trợ
+## Supported file formats
 
-| Định dạng | Đuôi file |
+| Format | File extensions |
 | --- | --- |
-| Văn bản | pdf, doc, docx, odt, xls, xlsx, ppt, pptx, txt, rtf, csv |
-| Hình ảnh | jpg, jpeg, png, gif, bmp |
+| Text | pdf, doc, docx, odt, xls, xlsx, ppt, pptx, txt, rtf, csv |
+| Images | jpg, jpeg, png, gif, bmp |
 | Video | mp4, avi, mkv, mov, wmv |
 
-## Ví dụ
+## Example
 
-Thông báo một lần sau khi tải file xong:
+Notify once after the file has been downloaded:
 
 ```ts
 await downloadFile({
   url: "https://stc-zmp.zadn.vn/mini-app/landingpage-banner-new.png",
 });
-console.log("Tải file thành công!");
+console.log("File downloaded successfully!");
 ```
 
-Báo cáo tiến độ tải file:
+Report download progress:
 
 ```ts
 await downloadFile({
   url: "https://stc-zmp.zadn.vn/mini-app/landingpage-banner-new.png",
   onProgress: (progress) => {
-    console.log(`Đã tải được ${progress}%...`);
+    console.log(`Downloaded ${progress}%...`);
   },
 });
-console.log("Tải file thành công!");
+console.log("File downloaded successfully!");
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| url | `string` | No | Đường dẫn của file muốn download. |
-| fileBase64Data | `string` | No | Dữ liệu base64 của file muốn lưu (tối đa 7.000.000 ký tự). |
-| onProgress | `(progress: number) => void` | No | Callback function tiến độ tải file. Với `progress` là số từ 0 đến 100%. |
+| url | `string` | No | Path of the file to download. |
+| fileBase64Data | `string` | No | Base64 data of the file to save (maximum 7,000,000 characters). |
+| onProgress | `(progress: number) => void` | No | Callback function for file download progress. `progress` is a number from 0 to 100%. |
 
-Nếu truyền đồng thời `url` và `fileBase64Data`, SDK sẽ ưu tiên `fileBase64Data`.
+If both `url` and `fileBase64Data` are passed, the SDK prioritizes `fileBase64Data`.

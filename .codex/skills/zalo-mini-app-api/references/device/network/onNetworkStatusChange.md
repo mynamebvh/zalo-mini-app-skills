@@ -7,32 +7,32 @@
 import { onNetworkStatusChange } from "zmp-sdk";
 ```
 
-Callback để lắng nghe sự kiện thay đổi mạng.
+Callback to listen for network change events.
 
-## Ví dụ
+## Example
 
-Lắng nghe sự kiện thay đổi mạng:
+Listen for network change events:
 
 ```ts
 onNetworkStatusChange(function (data) {
   const { isConnected, networkType } = data;
-  console.log(`Kết nối mạng: ${isConnected}, Loại mạng: ${networkType}`);
+  console.log(`Network connection: ${isConnected}, Network type: ${networkType}`);
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền trực tiếp một hàm callback vào API:
+Pass a callback function directly to the API:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| callback | `(data: NetworkStatusChangeData) => void` | Yes | Callback function được gọi khi mạng thay đổi. |
+| callback | `(data: NetworkStatusChangeData) => void` | Yes | Callback function that is called when the network changes. |
 
 ### NetworkStatusChangeData
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| isConnected | `boolean` | No | Trạng thái kết nối mạng. |
-| networkType | `"none" \| "wifi" \| "cellular" \| "unknown"` | No | Kiểu kết nối mạng hiện tại với các giá trị: - `none`: Không có mạng. - `wifi`: Mạng Wi-Fi. - `cellular`: Mạng di động (2g/3g/4g). - `unknown`: Mạng không xác định (Android). |
+| isConnected | `boolean` | No | Network connection status. |
+| networkType | `"none" \| "wifi" \| "cellular" \| "unknown"` | No | Current network connection type with the following values: - `none`: No network. - `wifi`: Wi-Fi network. - `cellular`: Mobile network (2g/3g/4g). - `unknown`: Unknown network (Android). |

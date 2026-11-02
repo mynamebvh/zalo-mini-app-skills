@@ -8,56 +8,56 @@
 import { getPhoneNumber } from "zmp-sdk";
 ```
 
-Lấy thông tin số điện thoại của người dùng. Khi gọi API, một thông báo xin cấp quyền sẽ được hiển thị. Mini App chỉ lấy được thông tin số điện thoại nếu người dùng đồng ý cấp quyền chia sẻ số điện thoại.
+Get the user's phone number information. When the API is called, a permission request notification will be displayed. The Mini App can only obtain the phone number information if the user agrees to grant permission to share the phone number.
 
-Lưu ý, để giúp các nhà phát triển Mini App sử dụng flow xin quyền một cách hiệu quả, cũng như phù hợp với [chính sách của Zalo Mini App điều 3.3.4](https://mini.zalo.me/documents/zalo-mini-app-developer-program-agreement/#33-api-quy%E1%BB%81n-truy-c%E1%BA%ADp), Mini App Team đã đưa ra một số gợi ý thiết kế trải nghiệm như thông tin bên dưới. Nhà phát triển cần giải thích rõ ràng và trực quan mục đích xin quyền để người dùng dễ dàng hiểu và đồng ý cung cấp thông tin.
+Note that to help Mini App developers use the permission request flow effectively, as well as to comply with [Zalo Mini App policy article 3.3.4](https://mini.zalo.me/documents/zalo-mini-app-developer-program-agreement/#33-api-quy%E1%BB%81n-truy-c%E1%BA%ADp), the Mini App Team has provided some experience design suggestions as below. Developers need to clearly and visually explain the purpose of the permission request so that users can easily understand and agree to provide the information.
 
-### Trường hợp chỉ cần số điện thoại cho một số tính năng nhất định
+### Case where the phone number is only needed for certain features
 
-Chỉ nên yêu cầu người dùng chia sẻ số điện thoại khi người dùng bắt đầu sử dụng các tính năng đó như khi tiến hành đặt hàng, đăng ký tham sự kiện...
+You should only ask the user to share their phone number when the user starts using those features, such as when placing an order, registering for an event...
 
 ![Flow request phone approve](https://docs.zaloplatforms.com/assets/images/infor_permission_phone_21.07-bf0d73376d592c67300fbea0ee4aabf1.png)
 
-### Trường bắt buộc phải cung cấp số điện thoại để sử dụng ứng dụng
+### Case where providing a phone number is required to use the app
 
-Với trường hợp này cần hiển thị UI Onboarding giải thích cụ thể lý do người dùng cần phải cung cấp số điện thoại. Tham khảo hình minh họa:
+In this case, you need to display an Onboarding UI that specifically explains why the user needs to provide a phone number. Refer to the illustration:
 
 ![Flow request phone approve](https://docs.zaloplatforms.com/assets/images/infor_permission_phone_onboarding-695a9925db0565c7fb76823204561f1b.png)
 
-Nhằm đảm bảo trải nghiệm thoải mái của người dùng Mini App, chúng tôi sẽ từ chối xét duyệt cho những Mini App có luồng xin cấp quyền chưa rõ ràng, không nêu được mục đích xin quyền đến người dùng. Tham khảo một số trường hợp vi phạm như bên dưới:
+To ensure a comfortable experience for Mini App users, we will refuse to approve Mini Apps whose permission request flow is unclear and does not state the purpose of the permission request to users. Refer to some violation cases below:
 
 ![Flow request location reject](https://docs.zaloplatforms.com/assets/images/dont-343b8088b6b711469a00eaa60b56cfee.png)
 
-## Mô tả luồng truy xuất thông tin
+## Information retrieval flow description
 
 ![getLocation](https://docs.zaloplatforms.com/assets/MA/img/api/flow-request-permission.jpeg)
 
-## Ví dụ
+## Example
 
-1. Ở Zalo Mini App, gọi API này để lấy token số điện thoại:
+1. In the Zalo Mini App, call this API to get the phone number token:
 
 ```ts
 const { token } = await getPhoneNumber();
 ```
 
-2. Dùng fetch hoặc axios để gửi token này lên server. Nếu không, bạn sẽ bị [lỗi khi gọi các API Server-Server từ Mini App](https://mini.zalo.me/community/9107262438710014159/loi-khi-goi-cac-api-server-server-tu-mini-app).
-3. Server chuyển đổi token thành thông tin số điện thoại và trả về cho Mini App theo [hướng dẫn](#token-to-phone).
+2. Use fetch or axios to send this token to the server. Otherwise, you will get [an error when calling Server-Server APIs from the Mini App](https://mini.zalo.me/community/9107262438710014159/loi-khi-goi-cac-api-server-server-tu-mini-app).
+3. The server converts the token into phone number information and returns it to the Mini App according to the [guide](#token-to-phone).
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<GetPhoneNumberReturns>` chứa chứa token để truy xuất thông tin số điện thoại.
+The API returns `Promise<GetPhoneNumberReturns>` containing the token used to retrieve the phone number information.
 
 ### GetPhoneNumberReturns
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| token | `string` | No | Là một chuỗi ký tự dùng để truy xuất thông tin số điện thoại thông qua server. Mỗi token được cung cấp chỉ có thể truy xuất thông tin được 1 lần với thời gian hết hạn sau 2 phút. |
+| token | `string` | No | A string used to retrieve the phone number information through the server. Each token provided can only retrieve the information once and expires after 2 minutes. |
 
-## Hướng dẫn chuyển đổi token thành số điện thoại người dùng
+## Guide to converting a token into the user's phone number
 
-Sử dụng **token** vừa nhận được để truy xuất số điện thoại của người dùng từ **Server** của bạn thông qua Zalo Open API, vui lòng tham khảo code mẫu bên dưới:
+Use the **token** just received to retrieve the user's phone number from your **Server** through the Zalo Open API, please refer to the sample code below:
 
 ```bash
 curl --location --request GET <https://graph.zalo.me/v2.0/me/info>
@@ -66,13 +66,13 @@ curl --location --request GET <https://graph.zalo.me/v2.0/me/info>
 --header **secret_key: <your zalo app secret key>**
 ```
 
-Mô tả các tham số cần sử dụng:
+Description of the parameters to use:
 
-- **access\_token**: truy xuất thông qua API sdk.getAccessToken({...})
-- **code**: giá trị là token bạn nhận được khi gọi API lấy số điện thoại.
-- **secret\_key**: Khoá bí mật của Zalo App, truy cập <https://developers.zalo.me/>, phần Quản lý ứng dụng tương ứng để truy xuất thông tin
+- **access\_token**: retrieved through the API sdk.getAccessToken({...})
+- **code**: the value is the token you received when calling the phone number retrieval API.
+- **secret\_key**: The secret key of the Zalo App, access <https://developers.zalo.me/>, in the corresponding App Management section to retrieve the information
 
-Ví dụ kết quả trả về:
+Example of the returned result:
 
 ```json
 {

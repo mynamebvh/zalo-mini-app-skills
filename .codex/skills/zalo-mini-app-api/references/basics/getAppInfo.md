@@ -7,29 +7,29 @@
 import { getAppInfo } from "zmp-sdk";
 ```
 
-API truy xuất thông tin Zalo Mini App hiện tại.
+API to retrieve information about the current Zalo Mini App.
 
-## Ví dụ
+## Example
 
-Lấy tên và phiên bản live hiện tại:
+Get the current live name and version:
 
 ```ts
 const { name, version } = await getAppInfo({});
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<GetAppInfoReturns>` chứa các thông tin Zalo Mini App hiện tại.
+Returns `Promise<GetAppInfoReturns>` containing the current Zalo Mini App information.
 
 ### GetAppInfoReturns
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| name | `string` | No | Tên Zalo Mini App. |
-| description | `string` | No | Mô tả Zalo Mini App. |
-| version | `string` | No | Phiên bản live hiện tại. |
-| appUrl | `string` | No | Link chia sẻ Zalo Mini App. |
-| qrCodeUrl | `string` | No | Link QR của Zalo Mini App. |
-| logoUrl | `string` | No | Đường dẫn đến hình ảnh logo của Zalo Mini App. |
+| name | `string` | No | Zalo Mini App name. |
+| description | `string` | No | Zalo Mini App description. |
+| version | `string` | No | Current live version. |
+| appUrl | `string` | No | Zalo Mini App share link. |
+| qrCodeUrl | `string` | No | Zalo Mini App QR link. |
+| logoUrl | `string` | No | Path to the Zalo Mini App logo image. |

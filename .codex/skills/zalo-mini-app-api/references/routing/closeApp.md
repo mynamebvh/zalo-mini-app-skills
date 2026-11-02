@@ -7,14 +7,14 @@
 import { closeApp } from "zmp-sdk";
 ```
 
-API yêu cầu đóng Zalo Mini App.
+API that requests to close the Zalo Mini App.
 
-## Ví dụ
+## Example
 
-Đóng Zalo Mini App:
+Close the Zalo Mini App:
 
 ```ts
 closeApp();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).

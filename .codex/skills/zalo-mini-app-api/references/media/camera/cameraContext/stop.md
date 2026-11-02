@@ -4,7 +4,7 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Kết thúc streaming từ camera
+End streaming from the camera
 
 ```js
 import React, { useEffect, useRef } from "react";

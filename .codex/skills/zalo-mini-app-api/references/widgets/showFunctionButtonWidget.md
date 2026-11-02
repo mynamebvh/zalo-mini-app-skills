@@ -8,15 +8,15 @@
 import { showFunctionButtonWidget } from "zmp-sdk";
 ```
 
-Widget Function Button: Khi người dùng nhấn vào button này, Mini App sẽ nhận được 1 interact token (có giá trị trong 1 giờ).
+Function Button Widget: When the user taps this button, the Mini App will receive 1 interact token (valid for 1 hour).
 
-Từ phiên bản `2.52.2` trở lên, `showFunctionButtonWidget` hỗ trợ hiển thị nhiều Widget Function Button trên cùng một trang; mỗi widget cần một element có `id` riêng biệt.
+From version `2.52.2` and above, `showFunctionButtonWidget` supports displaying multiple Function Button Widgets on the same page; each widget needs an element with a separate `id`.
 
 ![Widget FunctionButton](https://docs.zaloplatforms.com/assets/images/function_button_widget-a4f5805d306239f21aae8e631fd02460.png)
 
-## Ví dụ
+## Example
 
-Hiển thị Widget Function Button:
+Display the Function Button Widget:
 
 ```ts
 import React, { useEffect } from "react";
@@ -27,7 +27,7 @@ function HomePage() {
     showFunctionButtonWidget({
       id: "orderButton",
       type: "ORDER",
-      text: "Đặt hàng",
+      text: "Order",
       color: "#0068FF",
       textColor: "#FFFFFF",
       borderRadius: "48px",
@@ -52,21 +52,21 @@ function HomePage() {
 export default HomePage;
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| id | `string` | Yes | ID của element, nơi cần hiển thị widget. Mỗi widget trên cùng một trang cần sử dụng một element có ID riêng biệt. |
-| type | `"ORDER"` | Yes | Loại nút, hiện tại chỉ hỗ trợ giá trị: `ORDER`. |
-| text | `string` | Yes | Chuỗi hiển thị trong button. - Các giá trị sẽ trả về `interactToken`: `Thanh toán`, `Xác nhận và thanh toán`, `Đặt xe`, `Đặt hàng`, `Đăng ký gói` |
-| fontSize | `string` | No | Kích thước font chữ. Giá trị nhỏ nhất là 14px. (default: "16px") |
-| color | `string` | No | Màu chủ đạo của widget. Giá trị phải là chuỗi hex. (default: "#0068FF") |
-| textColor | `string` | No | Màu chữ trong button. Giá trị phải là chuỗi hex. (default: "#FFFFFF") |
-| borderRadius | `string` | No | Bo góc (bo tròn các góc của button). (default: "48px") |
-| disabled | `boolean` | No | Trạng thái vô hiệu hóa của widget. |
-| onDataReceived | `(interactToken: string, type: string, context: { callAction: (actionName: string, actionData: any) => void }) => void` | No | Callback được gọi khi người dùng nhấn vào widget. Callback nhận `interactToken` có giá trị trong 1 giờ, loại widget `type` và `context` chứa hàm `callAction(actionName, actionData)`. |
-| onError | `(error: AppError) => void` | No | Callback được gọi khi có lỗi xảy ra khi người dùng nhấn vào widget. Callback này chứa `error` là thông tin về lỗi. |
+| id | `string` | Yes | The ID of the element where the widget should be displayed. Each widget on the same page needs to use an element with a separate ID. |
+| type | `"ORDER"` | Yes | The type of the button, currently only the value `ORDER` is supported. |
+| text | `string` | Yes | The string displayed in the button. - The following values will return an `interactToken`: `Pay`, `Confirm and pay`, `Book a ride`, `Order`, `Subscribe to a plan` |
+| fontSize | `string` | No | The font size. The minimum value is 14px. (default: "16px") |
+| color | `string` | No | The primary color of the widget. The value must be a hex string. (default: "#0068FF") |
+| textColor | `string` | No | The text color in the button. The value must be a hex string. (default: "#FFFFFF") |
+| borderRadius | `string` | No | Border radius (rounds the corners of the button). (default: "48px") |
+| disabled | `boolean` | No | The disabled state of the widget. |
+| onDataReceived | `(interactToken: string, type: string, context: { callAction: (actionName: string, actionData: any) => void }) => void` | No | Callback called when the user taps the widget. The callback receives an `interactToken` valid for 1 hour, the widget `type`, and `context` containing the `callAction(actionName, actionData)` function. |
+| onError | `(error: AppError) => void` | No | Callback called when an error occurs while the user taps the widget. This callback contains `error`, which is the error information. |

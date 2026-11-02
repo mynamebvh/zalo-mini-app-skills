@@ -7,20 +7,20 @@
 import { getAccessToken } from "zmp-sdk";
 ```
 
-API dùng để lấy thông tin xác thực người dùng.
+API used to get user authentication information.
 
 > **Update**
 >
-> Từ phiên bản SDK 2.35.0, ứng dụng mặc định có quyền truy xuất access tokens mà không cần người dùng xác nhận đồng ý. Thông qua access tokens này, ứng dụng chỉ có thể xuất ID người sử dụng. Nếu ứng dụng có nhu cầu sử dụng Tên và Ảnh đại diện, vui lòng sử dụng **API [authorize](https://docs.zaloplatforms.com/docs/MA/api/user/authorization/authorize)** để yêu cầu người dùng cho phép truy cập scope.userInfo trước khi sử dụng API này. Lưu ý: Với các Zalo App có nhiều hơn 1 Mini App, hệ thống vẫn yêu cầu người dùng xác nhận khi truy xuất access tokens cho từng Mini App.
+> Starting from SDK version 2.35.0, apps have access token permission by default without requiring the user's consent. Through this access token, the app can only export the user's ID. If the app needs to use the Name and Avatar, please use the **[authorize API](https://docs.zaloplatforms.com/docs/MA/api/user/authorization/authorize)** to request the user's permission to access scope.userInfo before using this API. Note: For Zalo Apps with more than 1 Mini App, the system still requires the user to confirm when accessing access tokens for each Mini App.
 
-## Ví dụ
+## Example
 
 ```ts
 const accessToken = await getAccessToken();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<string>` chứa `accessToken`.
+The API returns `Promise<string>` containing the `accessToken`.

@@ -4,13 +4,13 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Update cấu hình streaming.
+Update the streaming configuration.
 
 ## Parameters
 
 | Property | Type | Default | Required | Description | Minimum Version |
 | --- | --- | --- | --- | --- | --- |
-| mediaConstraints | [MediaConstraints](https://docs.zaloplatforms.com/docs/MA/api/media/camera/createCameraContext#mediaconstraints-object) |  | true | Cấu hình streaming. |  |
+| mediaConstraints | [MediaConstraints](https://docs.zaloplatforms.com/docs/MA/api/media/camera/createCameraContext#mediaconstraints-object) |  | true | Streaming configuration. |  |
 
 ```js
 import React, { useEffect, useRef } from "react";
@@ -72,7 +72,7 @@ const HomePage = () => {
               await startStream({ audio: true, video: false });
             }}
           >
-            Start Micro
+            Start Microphone
           </Button>
           <Button
             size={"small"}

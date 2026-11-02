@@ -7,24 +7,24 @@
 import { getNetworkType } from "zmp-sdk";
 ```
 
-API truy xuất kiểu kết nối mạng hiện tại.
+API to retrieve the current network connection type.
 
-## Ví dụ
+## Example
 
-Lấy kiểu kết nối mạng hiện tại:
+Get the current network connection type:
 
 ```ts
 const { networkType } = await getNetworkType();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<GetNetworkTypeReturns>` chứa chứa kiểu kết nối mạng hiện tại.
+Returns `Promise<GetNetworkTypeReturns>` containing the current network connection type.
 
 ### GetNetworkTypeReturns
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| networkType | `"none" \| "wifi" \| "cellular" \| "unknown"` | No | Kiểu kết nối mạng hiện tại với các giá trị: - `none`: Không có mạng. - `wifi`: Mạng Wi-Fi. - `cellular`: Mạng di động (2g/3g/4g). - `unknown`: Mạng không xác định (Android). |
+| networkType | `"none" \| "wifi" \| "cellular" \| "unknown"` | No | Current network connection type with the following values: - `none`: No network. - `wifi`: Wi-Fi network. - `cellular`: Mobile network (2g/3g/4g). - `unknown`: Unknown network (Android). |

@@ -4,7 +4,7 @@
 > Last updated: 22/12/2025
 > Supported from: SDK 2.51.0, Android 25.11.02, IOS 25.12.02
 
-Lấy thông tin local file. File có thể ở dạng tạm hoặc đã được lưu bền (local cache hoặc local data).
+Get local file information. The file can be temporary or persistently stored (local cache or local data).
 
 ## Parameters
 
@@ -12,10 +12,10 @@ Lấy thông tin local file. File có thể ở dạng tạm hoặc đã đượ
 
 | Property | Type | Default | Required | Description | Minimum Version |
 | --- | --- | --- | --- | --- | --- |
-| filePath | string |  | true | Đường dẫn tới file trong folder tạm hoặc đã lưu cục bộ |  |
-| digestAlgorithm | string | md5 |  | Thuật toán băm để lấy file summary, hỗ trợ các loại sau:  - `md5` - `sha1` |  |
-| success | function |  |  | Callback function khi gọi api thành công |  |
-| fail | function |  |  | Callback function khi gọi api thất bại |  |
+| filePath | string |  | true | Path to the file in the temporary folder or saved locally |  |
+| digestAlgorithm | string | md5 |  | Hash algorithm to obtain the file summary; supports the following types:  - `md5` - `sha1` |  |
+| success | function |  |  | Callback function when the api call succeeds |  |
+| fail | function |  |  | Callback function when the api call fails |  |
 
 ## Return Values
 
@@ -23,9 +23,9 @@ Lấy thông tin local file. File có thể ở dạng tạm hoặc đã đượ
 
 | Property | Type | Description | Minimum Version |
 | --- | --- | --- | --- |
-| size | number | Kích thước file (byte size) |  |
-| digest | string | Giá trị băm được tính dựa trên thông số của file (gồm size và tên của file) |  |
-| type | string | Kiểu file (Vd: image/jpeg, video/mp4) |  |
+| size | number | File size (byte size) |  |
+| digest | string | Hash value calculated based on the file's parameters (including the file's size and name) |  |
+| type | string | File type (e.g. image/jpeg, video/mp4) |  |
 
 ## Sample Code
 
@@ -33,20 +33,20 @@ Lấy thông tin local file. File có thể ở dạng tạm hoặc đã đượ
 import { LFSStorage } from 'zmp-sdk/apis';
 
 LFSStorage.getFileInfo({
-  filePath: "[Đường dẫn tới file]",
+  filePath: "[Path to file]",
   digestAlgorithm: "md5",
   success: (data) => {
-    // xử lý khi gọi api thành công
+    // handle when the api call succeeds
     const { size, digest, type } = data;
   },
   fail: (error) => {
-    // xử lý khi gọi api thất bại
+    // handle when the api call fails
     console.log(error);
   },
 });
 ```
 
-// hoặc
+// or
 
 ```jsx
 import { LFSStorage } from 'zmp-sdk/apis';
@@ -54,11 +54,11 @@ import { LFSStorage } from 'zmp-sdk/apis';
 const getFileInfo = async () => {
   try {
     const { size, digest, type } = await LFSStorage.getFileInfo({
-      filePath: "[Đường dẫn tới file]",
+      filePath: "[Path to file]",
       digestAlgorithm: "md5",
     });
   } catch (error) {
-    // xử lý khi gọi api thất bại
+    // handle when the api call fails
     console.log(error);
   }
 };

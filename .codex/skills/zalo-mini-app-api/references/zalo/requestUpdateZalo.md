@@ -8,12 +8,12 @@
 import { requestUpdateZalo } from "zmp-sdk";
 ```
 
-API chủ động điều hướng người dùng tới AppStore/CH Play để cập nhật phiên bản Zalo mới nhất.
+API that proactively directs users to the App Store/Google Play to update to the latest Zalo version.
 
-## Ví dụ
+## Example
 
 ```ts
 await requestUpdateZalo();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).

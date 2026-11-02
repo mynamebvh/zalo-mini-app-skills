@@ -4,7 +4,7 @@
 > Last updated: 22/12/2025
 > Supported from: SDK 2.51.0, Android 25.11.02, IOS 25.12.02
 
-Kiểm tra xem LFS có được hỗ trợ không.
+Check whether LFS is supported.
 
 ## Sample Code
 
@@ -15,12 +15,12 @@ const isSupportLFS = async () => {
   try {
     const { support } = await LFSStorage.isSupportLFS();
     if (support) {
-      // LFS được hỗ trợ
+      // LFS is supported
     } else {
-      // LFS không được hỗ trợ
+      // LFS is not supported
     }
   } catch (error) {
-    // xử lý khi gọi api thất bại
+    // handle when the api call fails
     console.log(error);
   }
 };

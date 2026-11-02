@@ -8,18 +8,18 @@
 import { getDeviceIdAsync } from "zmp-sdk";
 ```
 
-API trả về chuỗi Device ID của thiết bị đã được hash. Các tài khoản người dùng khác nhau đăng nhập trên cùng 1 thiết bị và sử dụng cùng 1 Mini App (hoặc các Mini App có chung Zalo App ID) sẽ có giá trị Device ID giống nhau. Nếu không lấy được Device ID thì giá trị trả về là `unknown`.
+API that returns the hashed Device ID string of the device. Different user accounts logged in on the same device and using the same Mini App (or Mini Apps that share the same Zalo App ID) will have the same Device ID value. If the Device ID cannot be obtained, the returned value is `unknown`.
 
-## Ví dụ
+## Example
 
-Sử dụng kết hợp với `await`:
+Use in combination with `await`:
 
 ```ts
 const deviceId = await getDeviceIdAsync();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<string>` chứa chuỗi Device ID của thiết bị đã được hash.
+Returns `Promise<string>` containing the hashed Device ID string of the device.

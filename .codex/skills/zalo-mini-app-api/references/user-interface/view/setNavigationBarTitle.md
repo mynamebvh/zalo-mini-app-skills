@@ -7,26 +7,26 @@
 import { setNavigationBarTitle } from "zmp-sdk";
 ```
 
-API đặt lại tiêu đề trên thanh điều hướng của trang hiện tại.
+API that sets the title on the navigation bar of the current page.
 
-## Ví dụ
+## Example
 
-Khi người dùng truy cập trang Giỏ hàng:
+When the user visits the Cart page:
 
 ```ts
 function CartPage() {
   useEffect(() => {
-    setNavigationBarTitle({ title: "Giỏ hàng" });
+    setNavigationBarTitle({ title: "Cart" });
   }, []);
 }
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| title | `string` | Yes | Tiêu đề mới cần đặt cho trang. |
+| title | `string` | Yes | The new title to set for the page. |

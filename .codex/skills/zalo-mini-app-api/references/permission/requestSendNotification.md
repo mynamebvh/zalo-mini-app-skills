@@ -8,16 +8,16 @@
 import { requestSendNotification } from "zmp-sdk";
 ```
 
-API yêu cầu người dùng cho phép nhận thông báo qua OA Mini App. Khi gọi API, một thông báo sẽ được hiển thị.
+API that requests the user's permission to receive notifications via the Mini App OA. When the API is called, a notification is displayed.
 
-![Demo thông báo yêu cầu cho phép nhận thông báo qua OA Mini App](https://docs.zaloplatforms.com/assets/images/send_zns-06aee7ce69cda2ca2944d1a0c4068bf0.png)
+![Demo of the notification requesting permission to receive notifications via the Mini App OA](https://docs.zaloplatforms.com/assets/images/send_zns-06aee7ce69cda2ca2944d1a0c4068bf0.png)
 
-## Ví dụ
+## Example
 
-Yêu cầu người dùng cho phép nhận thông báo:
+Request the user's permission to receive notifications:
 
 ```ts
 await requestSendNotification();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).

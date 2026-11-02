@@ -8,11 +8,11 @@
 import { viewOAQr } from "zmp-sdk";
 ```
 
-API cho phép ứng dụng hiển thị QR code của OA.
+API that allows the app to display the OA's QR code.
 
-## Ví dụ
+## Example
 
-Hiển thị QR code của OA:
+Display the OA's QR code:
 
 ```ts
 await viewOAQr({
@@ -21,13 +21,13 @@ await viewOAQr({
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| id | `string` | Yes | Id của OA. |
-| displayName | `string` | No | Tên hiển thị của QR code. |
+| id | `string` | Yes | Id of the OA. |
+| displayName | `string` | No | Display name of the QR code. |

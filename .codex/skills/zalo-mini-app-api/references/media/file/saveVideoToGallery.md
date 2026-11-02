@@ -8,26 +8,26 @@
 import { saveVideoToGallery } from "zmp-sdk";
 ```
 
-Lưu video vào thư viện media của thiết bị, kích thước file được quy định như sau:
+Saves a video to the device's media library; the file size limits are as follows:
 
-| Hệ máy | Kích thước tối đa |
+| OS | Maximum size |
 | --- | --- |
-| Android | không quy định |
+| Android | no limit |
 | iOS | 100Mb |
 
-## Ví dụ
+## Example
 
-Thông báo một lần sau khi lưu video xong:
+Notify once after the video has been saved:
 
 ```ts
 await saveVideoToGallery({
   videoUrl:
     "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
 });
-console.log("Lưu video thành công!");
+console.log("Video saved successfully!");
 ```
 
-Xử lý lỗi khi lưu video:
+Handle errors when saving the video:
 
 ```ts
 try {
@@ -40,29 +40,29 @@ try {
 }
 ```
 
-Báo cáo tiến độ lưu video:
+Report saving progress:
 
 ```ts
 await saveVideoToGallery({
   videoUrl:
     "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4",
   onProgress: (progress) => {
-    console.log(`Đã lưu được ${progress}%...`);
+    console.log(`Saved ${progress}%...`);
   },
 });
-console.log("Lưu video thành công!");
+console.log("Video saved successfully!");
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| videoUrl | `string` | No | Đường dẫn của video cần lưu. |
-| videoBase64Data | `string` | No | Dữ liệu base64 của video cần lưu (tối đa 7.000.000 ký tự). |
-| onProgress | `(progress: number) => void` | No | Callback function tiến độ tải file. Với `progress` là số từ 0 đến 100%. |
+| videoUrl | `string` | No | Path of the video to save. |
+| videoBase64Data | `string` | No | Base64 data of the video to save (maximum 7,000,000 characters). |
+| onProgress | `(progress: number) => void` | No | Callback function for file download progress. `progress` is a number from 0 to 100%. |
 
-Nếu truyền đồng thời `videoUrl` và `videoBase64Data`, SDK sẽ ưu tiên `videoBase64Data`.
+If both `videoUrl` and `videoBase64Data` are passed, the SDK prioritizes `videoBase64Data`.

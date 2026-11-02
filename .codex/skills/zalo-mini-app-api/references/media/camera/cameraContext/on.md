@@ -4,14 +4,14 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Lắng nghe các sự kiện từ camera
+Listen for camera events
 
 ### on(eventName, listener)
 
-- eventName <[**CameraEvents**](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/CameraEvents)>: Tên của sự kiện
-- listener <Function>: Hàm xử lý sự kiện
+- eventName <[**CameraEvents**](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/CameraEvents)>: Event name
+- listener <Function>: Event handler function
 
-Thêm một hàm vào cuối mảng chứa hàm xử lý đã có của sự kiện [**CameraEvents**](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/CameraEvents). Khi sự kiện xảy ra, tất cả các hàm xử lý của sự kiện đó sẽ được gọi.
+Add a function to the end of the array of existing handlers for the [**CameraEvents**](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/CameraEvents) event. When the event occurs, all handlers for that event are called.
 
 ```js
 import { CameraEvents } from "zmp-sdk/apis";

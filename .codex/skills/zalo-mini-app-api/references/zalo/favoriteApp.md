@@ -8,16 +8,16 @@
 import { favoriteApp } from "zmp-sdk";
 ```
 
-API thêm ứng dụng vào danh sách ưa thích của người dùng ở Zalo Mini Apps Store.
+API that adds the app to the user's favorites list in the Zalo Mini Apps Store.
 
-![Danh sách ưa thích ở Zalo Mini Apps Store](https://docs.zaloplatforms.com/assets/MA/img/api/favoriteApp/favorite_screen.jpeg)
+![Favorites list in the Zalo Mini Apps Store](https://docs.zaloplatforms.com/assets/MA/img/api/favoriteApp/favorite_screen.jpeg)
 
-## Ví dụ
+## Example
 
-Thêm ứng dụng vào danh sách ưa thích:
+Add the app to the favorites list:
 
 ```ts
 await favoriteApp();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).

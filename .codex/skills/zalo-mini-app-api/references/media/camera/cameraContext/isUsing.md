@@ -4,7 +4,7 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Kiểm tra trạng thái streaming
+Check the streaming status
 
 ```js
 import React, { useEffect, useRef } from "react";

@@ -8,18 +8,18 @@
 import { getRouteParams } from "zmp-sdk";
 ```
 
-API truy xuất các tham số được gửi đến trang hiện tại.
+API that retrieves the parameters passed to the current page.
 
-## Ví dụ
+## Example
 
-Lấy ID của sản phẩm được truyền vào trong URL:
+Get the product ID passed in the URL:
 
 ```ts
 const { id } = getRouteParams();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Kết quả trả về
+## Returns
 
-API trả về `Record<string, string>` chứa tất cả tham số dưới dạng key-value.
+Returns `Record<string, string>` containing all parameters as key-value pairs.

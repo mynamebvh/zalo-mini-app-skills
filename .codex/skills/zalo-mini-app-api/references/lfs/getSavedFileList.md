@@ -4,7 +4,7 @@
 > Last updated: 22/12/2025
 > Supported from: SDK 2.51.0, Android 25.11.02, IOS 25.12.02
 
-Lấy thông tin tất cả các local data file đã được lưu của mini app.
+Get information about all saved local data files of the mini app.
 
 ## Parameters
 
@@ -12,8 +12,8 @@ Lấy thông tin tất cả các local data file đã được lưu của mini a
 
 | Property | Type | Default | Required | Description | Minimum Version |
 | --- | --- | --- | --- | --- | --- |
-| success | function |  |  | Callback function khi gọi api thành công |  |
-| fail | function |  |  | Callback function khi gọi api thất bại |  |
+| success | function |  |  | Callback function when the api call succeeds |  |
+| fail | function |  |  | Callback function when the api call fails |  |
 
 ## Return Values
 
@@ -21,7 +21,7 @@ Lấy thông tin tất cả các local data file đã được lưu của mini a
 
 | Property | Type | Description | Minimum Version |
 | --- | --- | --- | --- |
-| list | Array <FileInfo> | Danh sách file đã lưu cục bộ |  |
+| list | Array <FileInfo> | List of locally saved files |  |
 
 ## Entities
 
@@ -29,10 +29,10 @@ Lấy thông tin tất cả các local data file đã được lưu của mini a
 
 | Property | Type | Description | Minimum Version |
 | --- | --- | --- | --- |
-| filePath | string | Đường dẫn tới file trong folder cục bộ của mini app. |  |
-| size | number | Kích thước file (byte size) |  |
-| createTime | number | Thời gian file được tạo |  |
-| type | string | Type của file (Vd: image/jpeg, video/mp4) |  |
+| filePath | string | Path to the file in the mini app's local folder. |  |
+| size | number | File size (byte size) |  |
+| createTime | number | Time the file was created |  |
+| type | string | File type (e.g. image/jpeg, video/mp4) |  |
 
 ## Sample Code
 
@@ -41,17 +41,17 @@ import { LFSStorage } from 'zmp-sdk/apis';
 
 LFSStorage.getSavedFileList({
   success: (data) => {
-    // xử lý khi gọi api thành công
+    // handle when the api call succeeds
     const { list } = data;
   },
   fail: (error) => {
-    // xử lý khi gọi api thất bại
+    // handle when the api call fails
     console.log(error);
   },
 });
 ```
 
-// hoặc
+// or
 
 ```jsx
 import { LFSStorage } from 'zmp-sdk/apis';
@@ -60,7 +60,7 @@ const getSavedFileList = async () => {
   try {
     const { list } = await LFSStorage.getSavedFileList({});
   } catch (error) {
-    // xử lý khi gọi api thất bại
+    // handle when the api call fails
     console.log(error);
   }
 };

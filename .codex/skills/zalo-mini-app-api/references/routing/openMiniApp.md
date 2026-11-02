@@ -8,11 +8,11 @@
 import { openMiniApp } from "zmp-sdk";
 ```
 
-API dùng để mở một Zalo Mini App khác. Có thể mở với một đường dẫn cụ thể bên trong Mini App đó, hoặc đính kèm các tham số bổ sung.
+API used to open another Zalo Mini App. It can open a specific path inside that Mini App, or attach additional parameters.
 
-## Ví dụ
+## Example
 
-Mở Mini App "ZaUI Coffee":
+Open the "ZaUI Coffee" Mini App:
 
 ```ts
 openMiniApp({
@@ -20,7 +20,7 @@ openMiniApp({
 });
 ```
 
-Mở tab "Cá nhân" bên trong "ZaUI Coffee":
+Open the "Profile" tab inside "ZaUI Coffee":
 
 ```ts
 openMiniApp({
@@ -29,7 +29,7 @@ openMiniApp({
 });
 ```
 
-Mở "ZaUI Coffee" với `utm_campaign` tracking:
+Open "ZaUI Coffee" with `utm_campaign` tracking:
 
 ```ts
 openMiniApp({
@@ -40,14 +40,14 @@ openMiniApp({
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| appId | `string` | Yes | ID của Zalo Mini App cần mở. |
-| path | `string` | No | Đường dẫn đến một trang cụ thể bên trong Zalo Mini App cần mở. |
-| params | `Record<string, string>` | No | Object chứa các tham số bổ sung cần đính kèm với đường dẫn. |
+| appId | `string` | Yes | ID of the Zalo Mini App to open. |
+| path | `string` | No | Path to a specific page inside the Zalo Mini App to open. |
+| params | `Record<string, string>` | No | Object containing additional parameters to attach to the path. |

@@ -8,11 +8,11 @@
 import { openSMS } from "zmp-sdk";
 ```
 
-API mở ứng dụng tin nhắn với nội dung và số điện thoại cụ thể.
+API that opens the messaging app with a specific content and phone number.
 
-## Ví dụ
+## Example
 
-Mở ứng dụng tin nhắn với nội dung và số điện thoại cụ thể:
+Open the messaging app with a specific content and phone number:
 
 ```ts
 await openSMS({
@@ -21,13 +21,13 @@ await openSMS({
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| content | `string` | Yes | Nội dung tin nhắn. |
-| phoneNumber | `string` | Yes | Số điện thoại nhận tin nhắn. |
+| content | `string` | Yes | Message content. |
+| phoneNumber | `string` | Yes | Phone number that receives the message. |

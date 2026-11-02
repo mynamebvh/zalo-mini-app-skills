@@ -8,11 +8,11 @@
 import { openChat } from "zmp-sdk";
 ```
 
-API cho phép ứng dụng mở cửa sổ chat với User hoặc Official Account. Có thể tự động điền nội dung tin nhắn, tuy nhiên việc gửi tin nhắn hay không phụ thuộc vào quyết định của người dùng.
+API that allows the app to open a chat window with a User or an Official Account. The message content can be pre-filled, but whether the message is sent depends on the user's decision.
 
-## Ví dụ
+## Example
 
-Mở cửa sổ chat với người dùng:
+Open a chat window with a user:
 
 ```ts
 await openChat({
@@ -21,7 +21,7 @@ await openChat({
 });
 ```
 
-Mở cửa sổ chat với Official Account:
+Open a chat window with an Official Account:
 
 ```ts
 await openChat({
@@ -30,24 +30,24 @@ await openChat({
 });
 ```
 
-Tự động điền nội dung tin nhắn:
+Pre-fill the message content:
 
 ```ts
 await openChat({
   type: "oa",
   id: "xxx",
-  message: `Xin chào, tôi muốn mua sản phẩm này: ${productName}`,
+  message: `Hello, I would like to buy this product: ${productName}`,
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| type | `"user" \| "oa"` | Yes | Đối tượng mở cửa sổ chat. |
-| id | `string` | Yes | Id của User hoặc Official Account tương ứng. |
-| message | `string` | No | Nội dung sẽ được tự động điền vào ô tin nhắn. Người dùng có thể thay đổi nội dung này trước khi gửi. |
+| type | `"user" \| "oa"` | Yes | The entity to open a chat window with. |
+| id | `string` | Yes | Id of the corresponding User or Official Account. |
+| message | `string` | No | Content that will be pre-filled in the message box. The user can change this content before sending. |

@@ -8,14 +8,14 @@
 import { hideKeyboard } from "zmp-sdk";
 ```
 
-API để ẩn bàn phím ảo.
+API to hide the virtual keyboard.
 
-## Ví dụ
+## Example
 
-Chủ động ẩn bàn phím ảo:
+Proactively hide the virtual keyboard:
 
 ```ts
 hideKeyboard();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).

@@ -8,11 +8,11 @@
 import { unfollowOA } from "zmp-sdk";
 ```
 
-API cho phép ứng dụng hiển thị giao diện yêu cầu bỏ theo dõi Official Account để người dùng xác nhận.
+API that allows the app to display an interface requesting to unfollow an Official Account for the user to confirm.
 
-## Ví dụ
+## Example
 
-Hiển thị giao diện yêu cầu bỏ theo dõi Official Account:
+Display the interface requesting to unfollow an Official Account:
 
 ```ts
 await unfollowOA({
@@ -20,12 +20,12 @@ await unfollowOA({
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| id | `string` | Yes | Id của Official Account. |
+| id | `string` | Yes | Id of the Official Account. |

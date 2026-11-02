@@ -8,84 +8,84 @@
 import { authorize } from "zmp-sdk";
 ```
 
-### Cấp quyền sử dụng API
+### Granting API permissions
 
-Một số API cần sự cho phép của người dùng trước khi có thể được gọi. Các API này được chia thành nhiều phạm vi (Scope) tương ứng với từng mục đích sử dụng, mô tả chi tiết tham khảo bảng Scopes:
+Some APIs require the user's permission before they can be called. These APIs are divided into multiple scopes, each corresponding to a purpose of use; see the Scopes table for detailed descriptions:
 
 | Scope | Corresponding APIs | Description |
 | --- | --- | --- |
-| `scope.userInfo` | `getUserInfo` | Thông tin user (tên, avatar...) |
-| `scope.userLocation` | `getLocation` | Thông tin vị trí user |
-| `scope.userPhonenumber` | `getPhoneNumber` | Số điện thoại |
+| `scope.userInfo` | `getUserInfo` | User information (name, avatar...) |
+| `scope.userLocation` | `getLocation` | User location information |
+| `scope.userPhonenumber` | `getPhoneNumber` | Phone number |
 
-Khi một API như vậy được gọi:
+When such an API is called:
 
-- Nếu người dùng chưa chấp nhận hoặc từ chối, một cửa sổ pop-up sẽ xuất hiện để hỏi người dùng có muốn chấp nhận không. API chỉ có thể được gọi sau khi người dùng bấm chấp nhận.
-- Nếu người dùng đã chấp nhận cho phép, API có thể được gọi trực tiếp.
-- Nếu người dùng từ chối cho phép, callback lỗi sẽ được trả về.
+- If the user has not accepted or declined, a pop-up window appears asking whether the user wants to accept. The API can only be called after the user taps accept.
+- If the user has already granted permission, the API can be called directly.
+- If the user declines permission, an error callback is returned.
 
-Developer có thể sử dụng API này để chủ động khởi tạo yêu cầu cấp quyền đối với người dùng khi cần, hỗ trợ xin tối đa 3 quyền (đã bao gồm quyền Thông tin user):
+Developers can use this API to proactively initiate a permission request to the user when needed, supporting up to 3 permissions (including the User Info permission):
 
 ![Multi_API_Request](https://docs.zaloplatforms.com/assets/MA/img/authorize/multi_api_request_v2.png)
 
-### Lấy trạng thái của scope
+### Get the status of a scope
 
-Developer có thể sử dụng API `getSetting` để lấy trạng thái cho phép hiện tại của người dùng.
+Developers can use the `getSetting` API to get the user's current permission status.
 
-### Quản lý cấp/thu hồi quyền cho người dùng
+### Manage granting/revoking permissions for users
 
-Developer có thể gọi API `openPermissionSetting` để mở cài đặt và hướng dẫn người dùng bật/tắt cho phép API.
+Developers can call the `openPermissionSetting` API to open settings and guide the user to turn API permissions on/off.
 
 ![permission_settings](https://docs.zaloplatforms.com/assets/MA/img/authorize/permission_management.jpg)
 
-### Thời gian hiệu lực
+### Validity period
 
-Sau khi user đồng ý hoặc từ chối cấp quyền, trạng thái cấp quyền sẽ được ghi nhận và đồng bộ cho những lần sử dụng sau này.
+After the user accepts or declines the permission, the permission status is recorded and synced for subsequent uses.
 
 ### Best Practices
 
-- Chỉ khởi tạo yêu cầu cấp quyền khi cần thiết, giải thích rõ ràng lý do tại sao bạn muốn sử dụng nó trong yêu cầu cấp quyền.
-- Sử dụng API `getSetting` trước để lấy trạng thái cho phép hiện tại của người dùng, sau đó yêu cầu xin cấp thêm các quyền còn thiếu.
+- Only initiate a permission request when necessary, and clearly explain why you want to use it in the permission request.
+- Use the `getSetting` API first to get the user's current permission status, then request the remaining missing permissions.
 
-## Ví dụ
+## Example
 
-Khởi tạo cấp quyền
+Initiate permission request
 
 ```ts
 try {
   const data = await authorize({
     scopes: ["scope.userLocation", "scope.userPhonenumber"],
   });
-  console.log(data["scope.userLocation"]); // `true` nếu người dùng đồng ý cấp vị trí
-  console.log(data["scope.userPhonenumber"]); // `true` nếu người dùng đồng ý cấp số điện thoại
+  console.log(data["scope.userLocation"]); // `true` if the user agrees to grant location
+  console.log(data["scope.userPhonenumber"]); // `true` if the user agrees to grant the phone number
 } catch (error) {
   const code = (error as AppError).code;
   if (code === -201) {
-    console.log("Người dùng đã từ chối cấp quyền");
+    console.log("The user declined to grant permission");
   } else {
-    console.log("Lỗi khác");
+    console.log("Other error");
   }
 }
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| scopes | `string[]` | No | Danh sách các quyền cần được cấp, tham khảo bảng Scopes. Nếu không truyền, API mặc định xin quyền userInfo. |
+| scopes | `string[]` | No | List of permissions to grant; see the Scopes table. If not passed, the API requests the userInfo permission by default. |
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<Scopes>` chứa chứa các trạng thái của các quyền được cấp.
+Returns `Promise<Scopes>` containing the statuses of the granted permissions.
 
 ### Scopes
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| userInfo | `boolean` | No | Trạng thái quyền thông tin user. |
-| userLocation | `boolean` | No | Trạng thái quyền vị trí user. |
-| userPhonenumber | `boolean` | No | Trạng thái quyền số điện thoại. |
+| userInfo | `boolean` | No | Status of the user info permission. |
+| userLocation | `boolean` | No | Status of the user location permission. |
+| userPhonenumber | `boolean` | No | Status of the phone number permission. |

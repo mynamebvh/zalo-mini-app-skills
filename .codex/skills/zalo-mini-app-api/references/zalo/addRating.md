@@ -8,20 +8,20 @@
 import { addRating } from "zmp-sdk";
 ```
 
-API mở cửa sổ đánh giá ứng dụng, hỗ trợ ghi nhận đánh giá phản hồi của người dùng về chất lượng của Mini App.
+API that opens the app rating dialog, supporting the recording of user feedback ratings about the quality of the Mini App.
 
 > **Warning**
 >
-> Chỉ có thể hiển thị cửa sổ đánh giá 1 lần/tuần đối với mỗi người dùng. Quá giới hạn trên sẽ trả về [lỗi](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> The rating dialog can only be displayed once per week for each user. Exceeding the above limit will return an [error](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-![Cửa sổ đánh giá ứng dụng](https://docs.zaloplatforms.com/assets/MA/img/api/addRating/addRating_screen.jpg)
+![App rating dialog](https://docs.zaloplatforms.com/assets/MA/img/api/addRating/addRating_screen.jpg)
 
-## Ví dụ
+## Example
 
-Mở cửa sổ đánh giá ứng dụng:
+Open the app rating dialog:
 
 ```ts
 await addRating();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).

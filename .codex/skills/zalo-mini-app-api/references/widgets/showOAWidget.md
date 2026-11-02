@@ -8,15 +8,15 @@
 import { showOAWidget } from "zmp-sdk";
 ```
 
-Widget Quan tâm OA: Người dùng bấm nút "Quan tâm" trên widget sẽ thực hiện quan tâm ngay mà không cần hiển thị bottom sheet xin quyền. Thông tin OA được lấy từ OA đã xác thực Mini App.
+Follow OA Widget: When the user taps the "Follow" button on the widget, they will follow immediately without displaying a permission request bottom sheet. The OA information is taken from the OA that verified the Mini App.
 
-| Người dùng chưa quan tâm OA | Người dùng đã quan tâm OA |
+| User has not followed the OA | User has followed the OA |
 | --- | --- |
-| Widget Zalo OA | Widget Zalo OA |
+| Zalo OA Widget | Zalo OA Widget |
 
-## Ví dụ
+## Example
 
-Hiển thị Widget Quan tâm OA:
+Display the Follow OA Widget:
 
 ```ts
 import React, { useEffect } from "react";
@@ -26,7 +26,7 @@ function HomePage() {
   useEffect(() => {
     showOAWidget({
       id: "oaWidget",
-      guidingText: "Nhận thông báo khuyến mãi mới nhất từ cửa hàng",
+      guidingText: "Receive the latest promotion notifications from the store",
       color: "#0068FF",
       onStatusChange: (status) => {
         console.log(status);
@@ -46,15 +46,15 @@ function HomePage() {
 export default HomePage;
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| id | `string` | Yes | ID của element, nơi cần hiển thị widget. |
-| guidingText | `string` | No | Chuỗi dùng để thông báo cho người dùng. (default: "Nhận thông báo khuyến mãi mới nhất từ cửa hàng") |
-| color | `string` | No | Màu chủ đạo của widget. Giá trị phải là chuỗi hex. (default: "#0068FF") |
-| onStatusChange | `(status: boolean) => void` | No | Callback được gọi khi người dùng nhấn theo dõi OA. Trạng thái theo dõi mới được truyền vào tham số của callback. |
+| id | `string` | Yes | The ID of the element where the widget should be displayed. |
+| guidingText | `string` | No | The string used to notify the user. (default: "Receive the latest promotion notifications from the store") |
+| color | `string` | No | The primary color of the widget. The value must be a hex string. (default: "#0068FF") |
+| onStatusChange | `(status: boolean) => void` | No | Callback called when the user taps to follow the OA. The new follow status is passed into the callback's parameter. |

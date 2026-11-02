@@ -8,11 +8,11 @@
 import { keepScreen } from "zmp-sdk";
 ```
 
-API cho phép ứng dụng giữ cho màn hình luôn bật. Ví dụ: trường hợp play video. Khi thoát khỏi ứng dụng, cài đặt này sẽ quay về mặc định để tránh màn hình luôn bật.
+API that allows the app to keep the screen on. For example: when playing a video. When exiting the app, this setting returns to the default to avoid keeping the screen always on.
 
-## Ví dụ
+## Example
 
-Giữ màn hình luôn bật:
+Keep the screen on:
 
 ```ts
 await keepScreen({
@@ -20,7 +20,7 @@ await keepScreen({
 });
 ```
 
-Tắt chế độ giữ màn hình:
+Turn off keep-screen mode:
 
 ```ts
 await keepScreen({
@@ -28,12 +28,12 @@ await keepScreen({
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| keepScreenOn | `boolean` | Yes | Truyền `true` để giữ màn hình luôn bật. Truyền `false` để tắt chế độ này. |
+| keepScreenOn | `boolean` | Yes | Pass `true` to keep the screen on. Pass `false` to turn off this mode. |

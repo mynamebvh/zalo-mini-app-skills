@@ -4,38 +4,38 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Chụp ảnh từ camera.
+Take a photo from the camera.
 
 ## Parameters
 
 | Property | Type | Default | Required | Description | Minimum Version |
 | --- | --- | --- | --- | --- | --- |
-| cameraFrameProps | [PhotoConstraint](#photoconstraint-object) |  |  | Cấu hình cho ảnh chụp. |  |
+| cameraFrameProps | [PhotoConstraint](#photoconstraint-object) |  |  | Configuration for the captured photo. |  |
 
 ### PhotoConstraint *object*
 
 | Property | Type | Default | Required | Description | Minimum Version |
 | --- | --- | --- | --- | --- | --- |
-| width | number |  |  | Chiều rộng của ảnh |  |
-| height | number |  |  | Chiều cao của ảnh |  |
-| format | [PhotoFormat](#photoformat-enum) | PhotoFormat.JPEG |  | Định dạng ảnh. |  |
-| quality | [PhotoQuality](#photoquality-enum) | PhotoQuality.NORMAL |  | Chất lượng ảnh nén. Lưu ý: với ảnh PNG không nén, thông số này không có tác dụng |  |
-| mirrored | boolean |  |  | Bật chế độ gương cho ảnh chụp |  |
-| useVideoSourceSize | boolean |  |  | Ảnh sẽ lấy theo kích thước nội tại của video source |  |
-| minScreenshotWidth | number |  |  | Chiều rộng tối thiểu của khung ảnh |  |
-| minScreenshotHeight | number |  |  | Chiều cao tối thiểu của khung ảnh |  |
+| width | number |  |  | Width of the image |  |
+| height | number |  |  | Height of the image |  |
+| format | [PhotoFormat](#photoformat-enum) | PhotoFormat.JPEG |  | Image format. |  |
+| quality | [PhotoQuality](#photoquality-enum) | PhotoQuality.NORMAL |  | Compressed image quality. Note: for uncompressed PNG images, this parameter has no effect |  |
+| mirrored | boolean |  |  | Enable mirror mode for the captured photo |  |
+| useVideoSourceSize | boolean |  |  | The photo uses the intrinsic size of the video source |  |
+| minScreenshotWidth | number |  |  | Minimum width of the photo frame |  |
+| minScreenshotHeight | number |  |  | Minimum height of the photo frame |  |
 
-Lưu ý: để xác định kích thước ảnh sdk sẽ lấy theo thứ tự sau:
+Note: to determine the image size, the SDK uses the following order:
 
-1. width, height: ảnh sẽ theo đúng thông số này, không đảm bảo sẽ giữ đúng tỉ lệ ảnh so với video source.
-2. useVideoSourceSize: sẽ lấy kích thước nội tại của video source (`videoWidth`, `videoHeight`).
-3. minScreenshotWidth, minScreenshotHeight: ảnh đảm bảo giữ nguyên tỉ lệ ảnh so với video source, với kích thước tối thiểu theo thông số này. (Khuyến nghị dùng)
+1. width, height: the photo follows these exact parameters; the aspect ratio relative to the video source is not guaranteed to be preserved.
+2. useVideoSourceSize: uses the intrinsic size of the video source (`videoWidth`, `videoHeight`).
+3. minScreenshotWidth, minScreenshotHeight: the photo preserves the aspect ratio relative to the video source, with the minimum size given by these parameters. (Recommended)
 
 ### PhotoFormat *enum*
 
-- **WEBP**: "image/webp" (ảnh nén)
-- **PNG**: "image/png" (ảnh không nén)
-- **JPEG**: "image/jpeg" (ảnh nén)
+- **WEBP**: "image/webp" (compressed image)
+- **PNG**: "image/png" (uncompressed image)
+- **JPEG**: "image/jpeg" (compressed image)
 
 ### PhotoQuality *enum*
 
@@ -47,13 +47,13 @@ Lưu ý: để xác định kích thước ảnh sdk sẽ lấy theo thứ tự 
 
 ### PhotoFrame *object*
 
-Hàm trả về `null` khi camera chưa streaming hoặc không tạo được khung ảnh.
+The function returns `null` when the camera is not streaming or a photo frame could not be created.
 
 | Property | Type | Default | Required | Description | Minimum Version |
 | --- | --- | --- | --- | --- | --- |
-| data | string |  |  | Data URL của ảnh |  |
-| width | number |  |  | Chiều rộng của ảnh |  |
-| height | number |  |  | Chiều cao của ảnh |  |
+| data | string |  |  | Data URL of the image |  |
+| width | number |  |  | Width of the image |  |
+| height | number |  |  | Height of the image |  |
 
 ```js
 import React, { useEffect, useRef, useState } from "react";

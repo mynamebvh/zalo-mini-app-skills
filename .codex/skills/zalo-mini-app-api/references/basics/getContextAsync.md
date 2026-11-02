@@ -8,30 +8,30 @@
 import { getContextAsync } from "zmp-sdk";
 ```
 
-API trả về thông tin ngữ cảnh của người dùng hoặc nhóm khi Mini App được mở từ Menu mở rộng trong cửa sổ chat Zalo.
-Nếu ngữ cảnh không hợp lệ hoặc phiên bản Zalo không hỗ trợ, giá trị trả về sẽ rỗng.
+API that returns the context information of the user or group when the Mini App is opened from the extended Menu in the Zalo chat window.
+If the context is invalid or the Zalo version does not support it, the returned value will be empty.
 
-## Ví dụ
+## Example
 
-Kiểm tra ngữ cảnh hợp lệ và trả về thông tin ngữ cảnh:
+Check whether the context is valid and return the context information:
 
 ```ts
 const contextInfo = await getContextAsync();
 if (contextInfo) {
-  // Ngữ cảnh hợp lệ
+  // Valid context
   const { id, type } = contextInfo;
 }
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<ContextInfo>` chứa ngữ cảnh hiện tại.
+Returns `Promise<ContextInfo>` containing the current context.
 
 ### ContextInfo
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| type | `'USER_CHAT' \| 'GROUP_CHAT' \| ''` | No | Ngữ cảnh hiện tại là người dùng hoặc nhóm chat. |
-| id | `string` | No | ID của người dùng hoặc nhóm chat tương ứng. |
+| type | `'USER_CHAT' \| 'GROUP_CHAT' \| ''` | No | The current context is a user or a group chat. |
+| id | `string` | No | ID of the corresponding user or group chat. |

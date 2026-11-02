@@ -8,30 +8,30 @@
 import { getSystemInfo } from "zmp-sdk";
 ```
 
-API truy xuất thông tin hệ thống, thiết bị đang sử dụng.
+API to retrieve system information about the device being used.
 
-## Ví dụ
+## Example
 
-Lấy các thông tin phiên bản:
+Get the version information:
 
 ```ts
 const { version, apiVersion, zaloVersion } = getSystemInfo();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Kết quả trả về
+## Returns
 
-API trả về `SystemInfo` chứa các thông tin về phiên bản, ngôn ngữ, theme của hệ thống.
+Returns `SystemInfo` containing information about the system version, language, and theme.
 
 ### SystemInfo
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| version | `string` | No | Phiên bản đang được sử dụng của Zalo Mini App này. |
-| apiVersion | `string` | No | Phiên bản đang sử dụng của ZMP SDK. |
-| zaloVersion | `string` | No | Phiên bản của ứng dụng Zalo trên thiết bị. |
-| platform | `'android' \| 'iOS' \| 'wp' \| 'unknown' \| ''` | No | Thông tin hệ điều hành của thiết bị. |
-| language | `string` | No | Ngôn ngữ hiển thị của thiết bị. |
-| zaloLanguage | `string` | No | Ngôn ngữ hiển thị của ứng dụng Zalo trên thiết bị. |
-| zaloTheme | `string` | No | Theme hiện tại của ứng dụng Zalo trên thiết bị. |
+| version | `string` | No | The version of this Zalo Mini App currently in use. |
+| apiVersion | `string` | No | The version of the ZMP SDK currently in use. |
+| zaloVersion | `string` | No | The version of the Zalo app on the device. |
+| platform | `'android' \| 'iOS' \| 'wp' \| 'unknown' \| ''` | No | Operating system information of the device. |
+| language | `string` | No | Display language of the device. |
+| zaloLanguage | `string` | No | Display language of the Zalo app on the device. |
+| zaloTheme | `string` | No | Current theme of the Zalo app on the device. |

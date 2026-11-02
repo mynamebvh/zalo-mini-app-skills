@@ -4,7 +4,7 @@
 > Last updated: 22/12/2025
 > Supported from: SDK 2.51.0, Android 25.11.02, IOS 25.12.02
 
-Xoá local file đã lưu.
+Delete a saved local file.
 
 ## Parameters
 
@@ -12,9 +12,9 @@ Xoá local file đã lưu.
 
 | Property | Type | Default | Required | Description | Minimum Version |
 | --- | --- | --- | --- | --- | --- |
-| filePath | string |  | true | Đường dẫn tới file trong folder đã lưu cục bộ |  |
-| success | function |  |  | Callback function khi gọi api thành công |  |
-| fail | function |  |  | Callback function khi gọi api thất bại |  |
+| filePath | string |  | true | Path to the file in the locally saved folder |  |
+| success | function |  |  | Callback function when the api call succeeds |  |
+| fail | function |  |  | Callback function when the api call fails |  |
 
 ## Sample Code
 
@@ -22,18 +22,18 @@ Xoá local file đã lưu.
 import { LFSStorage } from 'zmp-sdk/apis';
 
 LFSStorage.removeSavedFile({
-  filePath: "Đường dẫn tới file",
+  filePath: "Path to file",
   success: () => {
-    // xử lý khi gọi api thành công
+    // handle when the api call succeeds
   },
   fail: (error) => {
-    // xử lý khi gọi api thất bại
+    // handle when the api call fails
     console.log(error);
   },
 });
 ```
 
-// hoặc
+// or
 
 ```jsx
 import { LFSStorage } from 'zmp-sdk/apis';
@@ -41,10 +41,10 @@ import { LFSStorage } from 'zmp-sdk/apis';
 const removeSavedFile = async () => {
   try {
     await LFSStorage.removeSavedFile({
-      filePath: "Đường dẫn tới file",
+      filePath: "Path to file",
     });
   } catch (error) {
-    // xử lý khi gọi api thất bại
+    // handle when the api call fails
     console.log(error);
   }
 };

@@ -8,34 +8,34 @@
 import { nativeStorage } from "zmp-sdk";
 ```
 
-Lấy dữ liệu đã lưu ở cache theo cơ chế đồng bộ.
+Gets data stored in the cache using the synchronous mechanism.
 
-## Ví dụ
+## Example
 
-Lấy giá trị tìm kiếm gần đây
+Get the recent search value
 
 ```ts
 const keyword = getItem("recentSearch");
 ```
 
-Lấy danh sách sản phẩm từ cache. Đảm bảo luôn sử dụng `try/catch` khi parse JSON để tránh lỗi có thể dẫn đến crash app.
+Get the product list from the cache. Make sure to always use `try/catch` when parsing JSON to avoid errors that could crash the app.
 
 ```ts
 try {
   const data: Product[] = JSON.parse(getItem("cache.productList"));
 } catch (error) {
-  // Không tìm thấy dữ liệu trong cache, hoặc dữ liệu không phải chuỗi JSON hợp lệ
+  // No data found in the cache, or the data is not a valid JSON string
 }
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| key | `string` | Yes | Tên khóa của dữ liệu cần lấy |
+| key | `string` | Yes | Name of the key of the data to get |
 
-## Kết quả trả về
+## Returns
 
-API trả về `string` chứa giá trị của khóa cần lấy, hoặc `null` nếu khóa không tồn tại.
+The API returns a `string` containing the value of the requested key, or `null` if the key does not exist.

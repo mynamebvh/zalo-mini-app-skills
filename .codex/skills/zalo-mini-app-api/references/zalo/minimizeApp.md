@@ -8,16 +8,16 @@
 import { minimizeApp } from "zmp-sdk";
 ```
 
-API chủ động thu nhỏ ứng dụng. Khi gọi API, Mini App sẽ được thu nhỏ vào một floating icon ở góc màn hình, giúp người sử dụng có thể tạm thời sử dụng các chức năng khác của Zalo, và quay trở lại Mini App của bạn mà không cần phải tải lại từ đầu.
+API that proactively minimizes the app. When the API is called, the Mini App is minimized into a floating icon at the corner of the screen, allowing users to temporarily use other Zalo features and return to your Mini App without reloading from the beginning.
 
-![Thu nhỏ ứng dụng](https://docs.zaloplatforms.com/assets/MA/img/ZMA-Floating.png)Ứng dụng đã được thu nhỏ
+![Minimize app](https://docs.zaloplatforms.com/assets/MA/img/ZMA-Floating.png) The app has been minimized
 
-## Ví dụ
+## Example
 
-Thu nhỏ ứng dụng:
+Minimize the app:
 
 ```ts
 await minimizeApp();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).

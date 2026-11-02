@@ -8,15 +8,15 @@
 import { openProfile } from "zmp-sdk";
 ```
 
-API cho phép ứng dụng mở profile của User hoặc Official Account.
+API that allows the app to open the profile of a User or an Official Account.
 
 > **Note**
 >
-> Với `oa` và `aliasOA`, màn hình được mở phụ thuộc trạng thái quan tâm của người dùng với OA đó: chưa quan tâm thì mở profile OA, đã quan tâm thì mở cửa sổ chat.
+> For `oa` and `aliasOA`, the screen that opens depends on whether the user follows that OA: if not following, the OA profile opens; if following, the chat window opens.
 
-## Ví dụ
+## Example
 
-Mở profile của người dùng:
+Open a user's profile:
 
 ```ts
 await openProfile({
@@ -25,7 +25,7 @@ await openProfile({
 });
 ```
 
-Mở Official Account (profile hoặc cửa sổ chat, tuỳ trạng thái user có quan tâm hay chưa):
+Open an Official Account (profile or chat window, depending on whether the user follows it):
 
 ```ts
 await openProfile({
@@ -34,13 +34,13 @@ await openProfile({
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| type | `"user" \| "oa" \| "aliasOA"` | Yes | Nhận các giá trị sau: `user`: Mở profile User. `oa`: Mở profile OA, hoặc cửa sổ chat nếu người dùng đã quan tâm OA. `aliasOA`: Như `oa`, nhưng field id truyền lên là alias của OA. |
-| id | `string` | Yes | Id của User hoặc OA. |
+| type | `"user" \| "oa" \| "aliasOA"` | Yes | Accepts the following values: `user`: Open the User profile. `oa`: Open the OA profile, or the chat window if the user already follows the OA. `aliasOA`: Same as `oa`, but the `id` field passed is the alias of the OA. |
+| id | `string` | Yes | Id of the User or OA. |

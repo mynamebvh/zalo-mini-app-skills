@@ -8,19 +8,19 @@
 import { followOA } from "zmp-sdk";
 ```
 
-API yêu cầu theo dõi Official Account. Khi gọi api, một thông báo sẽ được hiển thị.
+API that requests following an Official Account. When the API is called, a notification is displayed.
 
-Lưu ý, để giúp các nhà phát triển Mini App sử dụng flow xin quyền một cách hiệu quả, cũng như phù hợp với [chính sách của Zalo Mini App điều 3.3.4](https://mini.zalo.me/documents/zalo-mini-app-developer-program-agreement/#33-api-quy%E1%BB%81n-truy-c%E1%BA%ADp). Mini App Team đã đưa ra một số gợi ý thiết kế trải nghiệm như thông tin bên dưới. Nhà phát triển cần giải thích rõ ràng và trực quan mục đích xin quyền để người dùng dễ dàng hiểu và đồng ý cung cấp thông tin.
+Note: to help Mini App developers use the permission request flow effectively and in line with [section 3.3.4 of the Zalo Mini App policy](https://mini.zalo.me/documents/zalo-mini-app-developer-program-agreement/#33-api-quy%E1%BB%81n-truy-c%E1%BA%ADp). The Mini App Team has provided some experience design suggestions as shown below. Developers need to explain clearly and visually the purpose of the permission request so that users can easily understand and agree to provide information.
 
 ![Flow request location](https://docs.zaloplatforms.com/assets/images/do-69b3781d38ec1df91ecf5695f3ace020.png)
 
-Nhằm đảm bảo trải nghiệm thoải mái của người dùng Mini App, chúng tôi sẽ từ chối xét duyệt cho những Mini App có luồng xin cấp quyền chưa rõ ràng, không nêu được mục đích xin quyền đến người dùng. Tham khảo một số trường hợp vi phạm như bên dưới:
+To ensure a comfortable experience for Mini App users, we will reject Mini Apps whose permission request flow is unclear and does not state the purpose of the permission request to users. Refer to some violation cases below:
 
 ![Flow request location reject](https://docs.zaloplatforms.com/assets/images/dont-9d977ba47b76b3f3133c19b03756afa7.png)
 
-## Ví dụ
+## Example
 
-Theo dõi Official Account:
+Follow an Official Account:
 
 ```ts
 await followOA({
@@ -28,30 +28,30 @@ await followOA({
 });
 ```
 
-Xử lý lỗi:
+Error handling:
 
 ```ts
 try {
   await followOA({
     id: "xxxx",
   });
-  console.log("Theo dõi thành công");
+  console.log("Followed successfully");
 } catch (error) {
   const code = (error as AppError).code;
   if (code === -201) {
-    console.log("Người dùng đã từ chối theo dõi");
+    console.log("User declined to follow");
   } else {
-    console.log("Lỗi khác");
+    console.log("Other error");
   }
 }
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| id | `string` | Yes | Id của Official Account cần theo dõi. |
+| id | `string` | Yes | Id of the Official Account to follow. |

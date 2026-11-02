@@ -8,23 +8,23 @@
 import { nativeStorage } from "zmp-sdk";
 ```
 
-Lấy thông tin của cache theo cơ chế đồng bộ.
+Gets information about the cache using the synchronous mechanism.
 
-## Ví dụ
+## Example
 
 ```ts
 const { currentSize, limitSize } = nativeStorage.getStorageInfo();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Kết quả trả về
+## Returns
 
-API trả về `StorageInfo` chứa thông tin của cache.
+The API returns `StorageInfo` containing information about the cache.
 
 ### StorageInfo
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| currentSize | `number` | No | Không gian hiện tại bị chiếm (tính bằng KB) |
-| limitSize | `number` | No | Giới hạn kích thước không gian (tính bằng KB) |
+| currentSize | `number` | No | Currently occupied space (in KB) |
+| limitSize | `number` | No | Size limit of the space (in KB) |

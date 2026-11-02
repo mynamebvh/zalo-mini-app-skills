@@ -4,7 +4,7 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Lấy danh sách camera mà thiết bị có thể sử dụng. Lưu ý: chỉ trả danh sách đầy đủ sau khi đã gọi [start](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/start).
+Get the list of cameras that the device can use. Note: the full list is only returned after [start](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/start) has been called.
 
 ## Return Values
 
@@ -12,9 +12,9 @@ Lấy danh sách camera mà thiết bị có thể sử dụng. Lưu ý: chỉ t
 
 | Property | Type | Description | Minimum Version |
 | --- | --- | --- | --- |
-| kind | string | Loại thiết bị, vd: videoinput |  |
-| label | string | Tên của cam, vd: tele camera, ultra wide camera |  |
-| deviceId | string | ID của MediaDevice |  |
+| kind | string | Device type, e.g.: videoinput |  |
+| label | string | Camera name, e.g.: tele camera, ultra wide camera |  |
+| deviceId | string | MediaDevice ID |  |
 
 ```js
 import React, { useEffect, useRef, useState } from "react";
@@ -72,7 +72,7 @@ const HomePage = () => {
       {
         <Box className="mb-2" flex alignContent={"center"}>
           <Select
-            label="Danh sách camera"
+            label="Camera list"
             value={deviceId}
             defaultValue={deviceId}
             onChange={(e) => {

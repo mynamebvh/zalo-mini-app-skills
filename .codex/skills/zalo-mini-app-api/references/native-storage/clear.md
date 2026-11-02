@@ -8,14 +8,14 @@
 import { nativeStorage } from "zmp-sdk";
 ```
 
-Xoá toàn bộ dữ liệu trong cache theo cơ chế đồng bộ.
+Deletes all data in the cache using the synchronous mechanism.
 
-## Ví dụ
+## Example
 
-Xoá toàn bộ dữ liệu trong cache:
+Delete all data in the cache:
 
 ```ts
 nativeStorage.clear();
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).

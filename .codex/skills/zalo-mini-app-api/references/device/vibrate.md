@@ -8,17 +8,17 @@
 import { vibrate } from "zmp-sdk";
 ```
 
-API rung thiết bị.
+API that vibrates the device.
 
-## Ví dụ
+## Example
 
-Rung thiết bị trong 500 mili giây:
+Vibrate the device for 500 milliseconds:
 
 ```ts
 await vibrate();
 ```
 
-Rung thiết bị trong 1 giây:
+Vibrate the device for 1 second:
 
 ```ts
 await vibrate({
@@ -27,13 +27,13 @@ await vibrate({
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| type | `string` | No | Loại rung, hiện tại chỉ hỗ trợ `oneShot`. (default: "oneShot") |
-| milliseconds | `number` | No | Thời gian rung (tính bằng mili giây). Chỉ có thể thiết lập trên thiết bị Android. (default: 500) |
+| type | `string` | No | Vibration type; currently only `oneShot` is supported. (default: "oneShot") |
+| milliseconds | `number` | No | Vibration duration (in milliseconds). Can only be set on Android devices. (default: 500) |

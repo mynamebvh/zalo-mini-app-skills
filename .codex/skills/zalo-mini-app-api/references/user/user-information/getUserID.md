@@ -8,18 +8,18 @@
 import { getUserID } from "zmp-sdk";
 ```
 
-API cho phép truy xuất ID người dùng. Với ID là chuỗi định danh người dùng theo Zalo App. Chuỗi này là duy nhất cho mỗi người dùng trên mỗi ID Zalo App. Các Mini App cùng chung một ID Zalo App sẽ có thể dùng chuỗi này để định danh người dùng. (API này sẽ không cần yêu cầu người dùng xác nhận).
+API that allows retrieving the user ID. The ID is the user identifier string according to the Zalo App. This string is unique for each user on each Zalo App ID. Mini Apps sharing the same Zalo App ID can use this string to identify users. (This API does not require user confirmation.)
 
-## Ví dụ
+## Example
 
-Truy xuất ID người dùng:
+Retrieve the user ID:
 
 ```ts
 const userID = await getUserID({});
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<string>` chứa ID người dùng.
+The API returns `Promise<string>` containing the user ID.

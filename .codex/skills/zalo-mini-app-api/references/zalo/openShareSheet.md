@@ -8,11 +8,11 @@
 import { openShareSheet } from "zmp-sdk";
 ```
 
-API cho phép ứng dụng mở giao diện chia sẻ để người dùng chia sẻ thông tin với bạn bè Zalo.
+API that allows the app to open the share interface so users can share information with Zalo friends.
 
-## Ví dụ
+## Example
 
-### Chia sẻ văn bản
+### Share text
 
 ```ts
 const data = await openShareSheet({
@@ -28,11 +28,11 @@ console.log(data);
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| text | `string` | Yes | Nội dung văn bản cần chia sẻ |
-| description | `string` | No | Mô tả thêm cho nội dung cần chia sẻ |
-| autoParseLink | `boolean` | No | Với giá trị `true` url trong text sẽ được hiển thị dưới dạng thumbnail (default: false) |
+| text | `string` | Yes | Text content to share |
+| description | `string` | No | Additional description for the content to share |
+| autoParseLink | `boolean` | No | When `true`, URLs in the text are displayed as thumbnails (default: false) |
 
-### Chia sẻ hình ảnh
+### Share images
 
 ```ts
 const data = await openShareSheet({
@@ -48,10 +48,10 @@ console.log(data);
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| imageUrl | `string` | No | URL của hình ảnh cần chia sẻ |
-| imageUrls | `string[]` | No | URL của các hình ảnh cần chia sẻ. Tối đa 10 hình ảnh |
+| imageUrl | `string` | No | URL of the image to share |
+| imageUrls | `string[]` | No | URLs of the images to share. Maximum 10 images |
 
-### Chia sẻ liên kết
+### Share a link
 
 ```ts
 const data = await openShareSheet({
@@ -68,10 +68,10 @@ console.log(data);
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| link | `string` | Yes | Liên kết cần chia sẻ |
-| chatOnly | `boolean` | No | Chỉ chia sẻ qua cửa sổ chat (default: false) |
+| link | `string` | Yes | Link to share |
+| chatOnly | `boolean` | No | Share only via the chat window (default: false) |
 
-### Chia sẻ Official Account
+### Share an Official Account
 
 ```ts
 const data = await openShareSheet({
@@ -87,9 +87,9 @@ console.log(data);
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| id | `string` | Yes | Id của official account |
+| id | `string` | Yes | Id of the official account |
 
-### Chia sẻ GIF
+### Share a GIF
 
 ```ts
 const data = await openShareSheet({
@@ -108,12 +108,12 @@ console.log(data);
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| gifUrl | `string` | Yes | Url ảnh động cần chia sẻ |
-| imageUrl | `string` | No | Url hình ảnh đại diện |
-| width | `number` | No | Chiều rộng |
-| height | `number` | No | Chiều cao |
+| gifUrl | `string` | Yes | URL of the animated image to share |
+| imageUrl | `string` | No | URL of the cover image |
+| width | `number` | No | Width |
+| height | `number` | No | Height |
 
-### Chia sẻ video
+### Share a video
 
 ```ts
 const data = await openShareSheet({
@@ -132,12 +132,12 @@ console.log(data);
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| videoThumb | `string` | Yes | Url thumbnail cho video |
-| videoUrl | `string` | Yes | Url video |
-| width | `number` | No | Chiều rộng |
-| height | `number` | No | Chiều cao |
+| videoThumb | `string` | Yes | Thumbnail URL for the video |
+| videoUrl | `string` | Yes | Video URL |
+| width | `number` | No | Width |
+| height | `number` | No | Height |
 
-### Chia sẻ page hiện tại của Zalo Mini App
+### Share the current Zalo Mini App page
 
 ```ts
 const data = await openShareSheet({
@@ -155,12 +155,12 @@ console.log(data);
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| title | `string` | Yes | Tiêu đề cần chia sẻ. Tối đa 100 ký tự |
-| description | `string` | No | Mô tả. Tối đa 400 ký tự |
-| thumbnail | `string` | Yes | Url thumbnail cho Zalo Mini App |
-| path | `string` | No | Đường dẫn cần chia sẻ |
+| title | `string` | Yes | Title to share. Maximum 100 characters |
+| description | `string` | No | Description. Maximum 400 characters |
+| thumbnail | `string` | Yes | Thumbnail URL for the Zalo Mini App |
+| path | `string` | No | Path to share |
 
-### Chia sẻ page hiện tại của Zalo Mini App thông qua deep link
+### Share the current Zalo Mini App page via deep link
 
 ```ts
 const data = await openShareSheet({
@@ -178,30 +178,30 @@ console.log(data);
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| title | `string` | Yes | Tiêu đề cần chia sẻ. Tối đa 100 ký tự |
-| thumbnail | `string` | Yes | Url thumbnail cho Zalo Mini App |
-| description | `string` | No | Mô tả. Tối đa 400 ký tự |
-| path | `string` | No | Đường dẫn cần chia sẻ, mặc định sẽ lấy theo đường dẫn hiện tại |
+| title | `string` | Yes | Title to share. Maximum 100 characters |
+| thumbnail | `string` | Yes | Thumbnail URL for the Zalo Mini App |
+| description | `string` | No | Description. Maximum 400 characters |
+| path | `string` | No | Path to share; defaults to the current path |
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| type | `"text" \| "image" \| "link" \| "oa" \| "gif" \| "video" \| "zmp" \| "zmp_deep_link"` | Yes | Nhận các giá trị sau: - `text`: Chia sẻ văn bản. - `image`: Chia sẻ hình ảnh. - `link`: Chia sẻ liên kết. - `oa`: Chia sẻ Official Account. - `gif`: Chia sẻ ảnh động. - `video`: Chia sẻ video. - `zmp`: Chia sẻ page hiện tại của Zalo Mini App. - `zmp_deep_link`: Chia sẻ page hiện tại của Zalo Mini App thông qua deep link (hỗ trợ từ API 2.25.7). |
-| data | `ShareData` | Yes | Nội dung cần chia sẻ, tùy thuộc vào `type`. |
+| type | `"text" \| "image" \| "link" \| "oa" \| "gif" \| "video" \| "zmp" \| "zmp_deep_link"` | Yes | Accepts the following values: - `text`: Share text. - `image`: Share images. - `link`: Share a link. - `oa`: Share an Official Account. - `gif`: Share an animated image. - `video`: Share a video. - `zmp`: Share the current Zalo Mini App page. - `zmp_deep_link`: Share the current Zalo Mini App page via deep link (supported from API 2.25.7). |
+| data | `ShareData` | Yes | Content to share, depending on `type`. |
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<OpenShareSheetReturns>` chứa Promise chứa thông tin kết quả chia sẻ.
+Returns `Promise<OpenShareSheetReturns>`, a Promise containing the share result information.
 
 ### OpenShareSheetReturns
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| status | `'0' \| '2' \| '1'` | No | Trạng thái chia sẻ: - `0`: User nhấn hủy/cancel bài viết. - `1`: Đăng bài viết thành công lên nhật ký. - `2`: Đăng bài viết thành công qua cửa sổ chat. |
-| shareType | `'0' \| '2' \| '1'` | No | Trạng thái bài chia sẻ: - `0`: Công khai. - `1`: Chỉ mình tôi. - `2`: Chia sẻ cho danh sách bạn. |
-| numberOfUser | `number` | No | Số lượng user nhận được bài chia sẻ trong trường hợp `shareType=2`. |
+| status | `'0' \| '2' \| '1'` | No | Share status: - `0`: User pressed cancel on the post. - `1`: Post published successfully to the journal. - `2`: Post published successfully via the chat window. |
+| shareType | `'0' \| '2' \| '1'` | No | Shared post status: - `0`: Public. - `1`: Only me. - `2`: Shared to a friend list. |
+| numberOfUser | `number` | No | Number of users who receive the shared post when `shareType=2`. |

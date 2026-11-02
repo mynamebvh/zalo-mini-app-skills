@@ -8,11 +8,11 @@
 import { openPostFeed } from "zmp-sdk";
 ```
 
-API cho phép ứng dụng mở giao diện chia sẻ để người dùng chia sẻ thông tin lên nhật ký Zalo.
+API that allows the app to open the share interface so users can share information to their Zalo journal.
 
-## Ví dụ
+## Example
 
-### Chia sẻ hình ảnh
+### Share images
 
 ```ts
 const { status, shareType, numberOfUser } = await openPostFeed({
@@ -27,17 +27,17 @@ const { status, shareType, numberOfUser } = await openPostFeed({
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| imageUrl | `string` | No | URL của hình ảnh cần chia sẻ |
-| imageUrls | `string[]` | No | URL của các hình ảnh cần chia sẻ |
+| imageUrl | `string` | No | URL of the image to share |
+| imageUrls | `string[]` | No | URLs of the images to share |
 
-### Chia sẻ liên kết
+### Share a link
 
 ```ts
 const { status, shareType, numberOfUser } = await openPostFeed({
   type: "link",
   data: {
     link: "http://news.zing.vn/Trung-uong-quyet-dinh-phuong-an-nhan-su-cap-cao-post632739.html",
-    title: "Trung ương quyết định phương án nhân sự cấp cao",
+    title: "Central Committee decides on senior personnel plan",
     thumb: "https://example.com/thumbnail.jpg",
     description: "description",
   },
@@ -48,12 +48,12 @@ const { status, shareType, numberOfUser } = await openPostFeed({
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| link | `string` | Yes | Liên kết cần chia sẻ |
+| link | `string` | Yes | Link to share |
 | thumb | `string` | No | Thumbnail |
-| description | `string` | No | Mô tả. Tối đa 400 ký tự |
-| title | `string` | No | Tiêu đề của liên kết. Tối đa 100 ký tự |
+| description | `string` | No | Description. Maximum 400 characters |
+| title | `string` | No | Title of the link. Maximum 100 characters |
 
-### Chia sẻ profile
+### Share a profile
 
 ```ts
 const { status, shareType, numberOfUser } = await openPostFeed({
@@ -68,27 +68,27 @@ const { status, shareType, numberOfUser } = await openPostFeed({
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| id | `string` | Yes | Id của OA |
+| id | `string` | Yes | Id of the OA |
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| type | `"image" \| "link" \| "profile"` | Yes | Nhận các giá trị sau: - `image`: Chia sẻ hình ảnh. - `link`: Chia sẻ liên kết. - `profile`: Chia sẻ profile OA. |
-| data | `ShareData` | Yes | Nội dung cần chia sẻ, tùy thuộc vào `type`. |
+| type | `"image" \| "link" \| "profile"` | Yes | Accepts the following values: - `image`: Share images. - `link`: Share a link. - `profile`: Share an OA profile. |
+| data | `ShareData` | Yes | Content to share, depending on `type`. |
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<OpenPostFeedReturns>` chứa chứa thông tin kết quả chia sẻ.
+Returns `Promise<OpenPostFeedReturns>` containing the share result information.
 
 ### OpenPostFeedReturns
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| status | `'0' \| '1'` | No | Trạng thái chia sẻ: - `0`: User nhấn hủy/cancel bài viết. - `1`: Đăng bài viết thành công. |
-| shareType | `'0' \| '1' \| '2'` | No | Trạng thái bài chia sẻ: - `0`: Công khai. - `1`: Chỉ mình tôi. - `2`: Chia sẻ cho danh sách bạn. |
-| numberOfUser | `number` | No | Số lượng user nhận được bài chia sẻ trong trường hợp `shareType=2`. |
+| status | `'0' \| '1'` | No | Share status: - `0`: User pressed cancel on the post. - `1`: Post published successfully. |
+| shareType | `'0' \| '1' \| '2'` | No | Shared post status: - `0`: Public. - `1`: Only me. - `2`: Shared to a friend list. |
+| numberOfUser | `number` | No | Number of users who receive the shared post when `shareType=2`. |

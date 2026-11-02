@@ -8,11 +8,11 @@
 import { openDocument } from "zmp-sdk";
 ```
 
-API cho phép ứng dụng xem trực tiếp tài liệu (PDF) từ URL hoặc local file [LFS](https://docs.zaloplatforms.com/docs/MA/api/lfs/localFileSystem).
+API that allows the app to view documents (PDF) directly from a URL or a local file in [LFS](https://docs.zaloplatforms.com/docs/MA/api/lfs/localFileSystem).
 
-## Ví dụ
+## Example
 
-Mở tài liệu PDF từ URL:
+Open a PDF document from a URL:
 
 ```ts
 openDocument({
@@ -20,45 +20,45 @@ openDocument({
 });
 ```
 
-Mở tài liệu PDF từ URL với tiêu đề tùy chỉnh:
+Open a PDF document from a URL with a custom title:
 
 ```ts
 openDocument({
   url: "https://pdfobject.com/pdf/sample.pdf",
-  title: "Tài liệu mẫu"
+  title: "Sample document"
 });
 ```
 
-Mở tài liệu PDF từ URL với tiêu đề tùy chỉnh và mở tính năng tải xuống:
+Open a PDF document from a URL with a custom title and enable the download feature:
 
 ```ts
 openDocument({
   url: "https://pdfobject.com/pdf/sample.pdf",
-  title: "Tài liệu mẫu",
+  title: "Sample document",
   download: true
 });
 ```
 
-Mở tài liệu PDF từ URL với tiêu đề tùy chỉnh và mở tính năng chỉnh sửa (chỉ hỗ trợ trên ios):
+Open a PDF document from a URL with a custom title and enable the edit feature (supported on ios only):
 
 ```ts
 openDocument({
   url: "https://pdfobject.com/pdf/sample.pdf",
-  title: "Tài liệu mẫu",
+  title: "Sample document",
   edit: true
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| url | `string` | Yes | URL của tài liệu cần mở. Hiện chỉ hỗ trợ định dạng tài liệu PDF. |
-| title | `string` | No | Tiêu đề của tài liệu trên header bar. Mặc định lấy tên từ URL. |
-| share | `boolean` | No | Yêu cầu bật tính năng chia sẻ tài liệu. SDK chỉ chuyển tiếp giá trị này trên Android khi điều kiện hỗ trợ được đáp ứng. (default: false) |
-| download | `boolean` | No | Bật tính năng tải tài liệu. Mặc định là false. (default: false) |
-| edit | `boolean` | No | Bật tính năng chỉnh sửa tài liệu (chỉ hỗ trợ trên ios). Mặc định là false. (default: false) |
+| url | `string` | Yes | URL of the document to open. Currently only the PDF document format is supported. |
+| title | `string` | No | Title of the document on the header bar. Defaults to the name taken from the URL. |
+| share | `boolean` | No | Requests that the document sharing feature be enabled. The SDK only forwards this value on Android when the supporting conditions are met. (default: false) |
+| download | `boolean` | No | Enables the document download feature. Defaults to false. (default: false) |
+| edit | `boolean` | No | Enables the document edit feature (supported on ios only). Defaults to false. (default: false) |

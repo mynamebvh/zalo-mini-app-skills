@@ -8,18 +8,18 @@
 import { scanQRCode } from "zmp-sdk";
 ```
 
-Cho phép ứng dụng mở tính năng quét QR Code của Zalo App và trả về kết quả sau khi người dùng quét thành công.
+Allows the app to open the QR Code scanning feature of the Zalo app and returns the result after the user scans successfully.
 
-## Ví dụ
+## Example
 
-Lấy nội dung của QR đã quét
+Get the content of the scanned QR
 
 ```ts
 const { content } = await scanQRCode({});
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<ScanQRCodeReturns>` chứa object với thuộc tính `content` là nội dung của QR đã quét.
+Returns `Promise<ScanQRCodeReturns>` containing an object whose `content` property is the content of the scanned QR.

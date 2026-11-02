@@ -8,17 +8,17 @@
 import { interactOA } from "zmp-sdk";
 ```
 
-API yêu cầu người dùng cho phép gửi thông báo thông qua Official Account. API sẽ chỉ hiển thị thông báo khi cần yêu cầu quyền từ người dùng. Lưu ý, để giúp các nhà phát triển Mini App sử dụng flow xin quyền một cách hiệu quả, cũng như phù hợp với [chính sách của Zalo Mini App điều 3.3.4](https://mini.zalo.me/documents/zalo-mini-app-developer-program-agreement/#33-api-quy%E1%BB%81n-truy-c%E1%BA%ADp). Mini App Team đã đưa ra một số gợi ý thiết kế trải nghiệm như thông tin bên dưới. Nhà phát triển cần giải thích rõ ràng và trực quan mục đích xin quyền để người dùng dễ dàng hiểu và đồng ý cung cấp thông tin.
+API that requests that the user allow sending notifications through an Official Account. The API only displays a notification when permission needs to be requested from the user. Note: to help Mini App developers use the permission request flow effectively and in line with [section 3.3.4 of the Zalo Mini App policy](https://mini.zalo.me/documents/zalo-mini-app-developer-program-agreement/#33-api-quy%E1%BB%81n-truy-c%E1%BA%ADp). The Mini App Team has provided some experience design suggestions as shown below. Developers need to explain clearly and visually the purpose of the permission request so that users can easily understand and agree to provide information.
 
 ![Flow request interact](https://docs.zaloplatforms.com/assets/images/interact_do-4072231e4feb67a9102229f849e307c1.png)
 
-Nhằm đảm bảo trải nghiệm thoải mái của người dùng Mini App, chúng tôi sẽ từ chối xét duyệt cho những Mini App có luồng xin cấp quyền chưa rõ ràng, không nêu được mục đích xin quyền đến người dùng. Tham khảo một số trường hợp vi phạm như bên dưới:
+To ensure a comfortable experience for Mini App users, we will reject Mini Apps whose permission request flow is unclear and does not state the purpose of the permission request to users. Refer to some violation cases below:
 
 ![Flow request interact reject](https://docs.zaloplatforms.com/assets/images/interact_dont-6861386220f3781f35b7500910548fcd.png)
 
-## Ví dụ
+## Example
 
-Yêu cầu người dùng cho phép gửi thông báo thông qua Official Account:
+Request that the user allow sending notifications through an Official Account:
 
 ```ts
 await interactOA({
@@ -26,30 +26,30 @@ await interactOA({
 });
 ```
 
-Xử lý lỗi:
+Error handling:
 
 ```ts
 try {
   await interactOA({
     oaId: "xxxx",
   });
-  console.log("Người dùng đã cho phép");
+  console.log("User has granted permission");
 } catch (error) {
   const code = (error as AppError).code;
   if (code === -201) {
-    console.log("Người dùng đã từ chối");
+    console.log("User has declined");
   } else {
-    console.log("Lỗi khác");
+    console.log("Other error");
   }
 }
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| oaId | `string` | Yes | Id của Official Account. |
+| oaId | `string` | Yes | Id of the Official Account. |

@@ -8,12 +8,12 @@
 import { openWebview } from "zmp-sdk";
 ```
 
-Tải một trang web bằng Webview.
-Để biết khi nào Webview được đóng, vui lòng lắng nghe sự kiện [WebviewClosed](https://docs.zaloplatforms.com/docs/MA/api/events#webviewclosed).
+Loads a web page using Webview.
+To know when the Webview is closed, please listen for the [WebviewClosed](https://docs.zaloplatforms.com/docs/MA/api/events#webviewclosed) event.
 
-## Ví dụ
+## Example
 
-Mở trang chủ của Zalo Mini App:
+Open the Zalo Mini App homepage:
 
 ```ts
 openWebview({
@@ -21,7 +21,7 @@ openWebview({
 });
 ```
 
-Mở trang chủ của Zalo Mini App toàn màn hình:
+Open the Zalo Mini App homepage in full screen:
 
 ```ts
 openWebview({
@@ -32,14 +32,14 @@ openWebview({
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| url | `string` | Yes | Đường dẫn của trang web cần tải. |
-| style | `"bottomSheet" \| "normal"` | No | Kiểu hiển thị của Webview: (default: "bottomSheet") |
-| leftButton | `"back" \| "none"` | No | Nút bên trái thanh header: (chỉ hỗ trợ cho style 'bottomSheet') (default: "back") |
+| url | `string` | Yes | URL of the web page to load. |
+| style | `"bottomSheet" \| "normal"` | No | Display style of the Webview: (default: "bottomSheet") |
+| leftButton | `"back" \| "none"` | No | Left button of the header bar: (only supported for style 'bottomSheet') (default: "back") |

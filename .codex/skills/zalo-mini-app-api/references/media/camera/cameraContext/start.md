@@ -4,7 +4,7 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Bắt đầu streaming camera. Nếu bạn muốn sử dụng thêm micro thì có thể đặt config [MediaConstraints](https://docs.zaloplatforms.com/docs/MA/api/media/camera/createCameraContext#mediaconstraints-object) với `audio` là `true`, hoặc gọi [resume](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/resume) với **StreamType**.AUDIO.
+Start camera streaming. If you also want to use the microphone, you can set the [MediaConstraints](https://docs.zaloplatforms.com/docs/MA/api/media/camera/createCameraContext#mediaconstraints-object) config with `audio` set to `true`, or call [resume](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/resume) with **StreamType**.AUDIO.
 
 ```js
 import React, { useEffect, useRef } from "react";

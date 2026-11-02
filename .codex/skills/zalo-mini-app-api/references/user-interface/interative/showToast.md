@@ -8,24 +8,24 @@
 import { showToast } from "zmp-sdk";
 ```
 
-API hiển thị một thông báo ngắn trên màn hình.
+API that displays a short notification on the screen.
 
-## Ví dụ
+## Example
 
-Hiện thông báo đặt hàng thành công:
+Show a successful order notification:
 
 ```ts
 showToast({
-  message: "Đặt hàng thành công!",
+  message: "Order placed successfully!",
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| message | `string` | Yes | Nội dung thông báo cần hiển thị. |
+| message | `string` | Yes | The content of the notification to display. |

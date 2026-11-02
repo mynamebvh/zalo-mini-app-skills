@@ -2,26 +2,26 @@
 
 > Source: https://docs.zaloplatforms.com/docs/MA/api/media/file/openMediaPicker
 > Last updated: 08/12/2025
-> Supported from: SDK 2.18.11, Android 2.23.2: hỗ trợ các type `zcamera`, `zcamera_photo`, `zcamera_video`, `zcamera_scan`.
+> Supported from: SDK 2.18.11, Android 2.23.2: supports the types `zcamera`, `zcamera_photo`, `zcamera_video`, `zcamera_scan`.
 
 ```ts
 import { openMediaPicker } from "zmp-sdk";
 ```
 
-Mở cửa sổ chọn media (camera, ảnh, file, video) từ thiết bị.
+Opens a media picker (camera, photos, files, videos) from the device.
 
 > **Change**
 >
-> Với môi trường hỗ trợ [LFS](https://docs.zaloplatforms.com/docs/MA/api/lfs/localFileSystem), có những thay đổi đáng chú ý sau:
+> For environments that support [LFS](https://docs.zaloplatforms.com/docs/MA/api/lfs/localFileSystem), there are the following notable changes:
 >
-> - Không còn bắt buộc upload file lên server. Mặc định nếu không truyền tham số **serverUploadUrl**, SDK sẽ trả về đường dẫn tạm thời (local cache) của media mà không tự động upload lên server. **Lưu ý**: Các file này được lưu tạm thời và sẽ được xóa khi app khởi động lại, nếu cần lưu bền app có thể gọi [saveFile](https://docs.zaloplatforms.com/docs/MA/api/lfs/saveFile) để chuyển file thành local data
-> - Nén ảnh với các chất lượng đầu ra qua tham số **compressLevel**. Nếu không truyền, SDK sẽ mặc định trả về ảnh không nén (**compressLevel**=0). App có thể tối ưu việc lưu trữ ảnh với kích thước nhỏ gọn hơn với mức nén cao dần (1 đến 3) tùy vào nhu cầu sử dụng.
+> - Uploading files to the server is no longer required. By default, if the **serverUploadUrl** parameter is not passed, the SDK returns the temporary path (local cache) of the media without automatically uploading it to the server. **Note**: These files are stored temporarily and will be deleted when the app restarts; if you need persistent storage, the app can call [saveFile](https://docs.zaloplatforms.com/docs/MA/api/lfs/saveFile) to convert the file into local data
+> - Compress images with various output qualities via the **compressLevel** parameter. If not passed, the SDK defaults to returning uncompressed images (**compressLevel**=0). The app can optimize image storage with a more compact size using progressively higher compression levels (1 to 3) depending on its needs.
 >
-> Để kiểm tra LFS có được hỗ trợ hay không, vui lòng sử dụng API [isSupportLFS](https://docs.zaloplatforms.com/docs/MA/api/lfs/isSupportLFS).
+> To check whether LFS is supported, please use the [isSupportLFS](https://docs.zaloplatforms.com/docs/MA/api/lfs/isSupportLFS) API.
 
-## Ví dụ
+## Example
 
-Mở cửa sổ chọn ảnh, nén ảnh với mức nén vừa, nhận kết quả trả về đường dẫn đến file tạm
+Open the image picker, compress the image with medium compression, and receive the path to the temporary file
 
 ```ts
 const { data } = await openMediaPicker({
@@ -32,7 +32,7 @@ const { data } = await openMediaPicker({
 console.log(data);
 ```
 
-Mở cửa sổ chọn video, nhận kết quả trả về đường dẫn đến file tạm
+Open the video picker and receive the path to the temporary file
 
 ```ts
 const { data } = await openMediaPicker({
@@ -41,7 +41,7 @@ const { data } = await openMediaPicker({
 console.log(data);
 ```
 
-Chọn nhiều ảnh:
+Select multiple photos:
 
 ```ts
 const { data } = await openMediaPicker({
@@ -50,7 +50,7 @@ const { data } = await openMediaPicker({
 });
 ```
 
-Chọn ảnh từ camera Zalo:
+Select a photo from the Zalo camera:
 
 ```ts
 const { data } = await openMediaPicker({
@@ -58,50 +58,50 @@ const { data } = await openMediaPicker({
 });
 ```
 
-> Xem hướng dẫn xử lý lỗi và bảng mô tả chi tiết mã lỗi [tại đây](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
+> See the error handling guide and the detailed error code table [here](https://docs.zaloplatforms.com/docs/MA/api/errorCode).
 
-## Tham số
+## Parameters
 
-Truyền tham số vào API dưới dạng object chứa các thuộc tính:
+Pass parameters to the API as an object with the following properties:
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| serverUploadUrl | `string` | No | Đường dẫn upload media. Server phải hỗ trợ upload media qua POST và trả về kết quả dạng JSON. Xem ví dụ về server tại [đây](https://miniapp.zaloplatforms.com/documents/api/openMediaPicker/#upload-l%C3%AAn-server). |
-| type | `"photo" \| "file" \| "video" \| "zcamera" \| "zcamera_photo" \| "zcamera_video" \| "zcamera_scan"` | Yes | Loại media cần chọn. Các giá trị: |
-| maxItemSize | `number` | No | Giới hạn kích thước (byte) tối đa của media được phép chọn. |
-| maxSelectItem | `number` | No | Giới hạn số lượng tối đa media được chọn. (default: 1) |
-| silentRequest | `boolean` | No | Hiển thị hoặc ẩn dialog xử lý các tác vụ ngầm: (default: false) |
-| editView | `Object` | No | Hiển thị view chỉnh sửa ảnh. |
-| compressLevel | `number` | No | Mức nén ảnh khi chọn type là `photo` hoặc `zcamera_photo`. Các mức nén: - **0**: Không nén (ảnh gốc) - **1**: Nén thấp - **2**: Nén trung bình - **3**: Nén cao (ảnh có thể bị rỗ) (default: 0) |
+| serverUploadUrl | `string` | No | Media upload path. The server must support uploading media via POST and return the result as JSON. See an example server [here](https://miniapp.zaloplatforms.com/documents/api/openMediaPicker/#upload-l%C3%AAn-server). |
+| type | `"photo" \| "file" \| "video" \| "zcamera" \| "zcamera_photo" \| "zcamera_video" \| "zcamera_scan"` | Yes | Type of media to select. Values: |
+| maxItemSize | `number` | No | Maximum size (in bytes) of the media allowed to be selected. |
+| maxSelectItem | `number` | No | Maximum number of media items that can be selected. (default: 1) |
+| silentRequest | `boolean` | No | Show or hide the dialog for handling background tasks: (default: false) |
+| editView | `Object` | No | Show the image editing view. |
+| compressLevel | `number` | No | Image compression level when the type is `photo` or `zcamera_photo`. Compression levels: - **0**: No compression (original image) - **1**: Low compression - **2**: Medium compression - **3**: High compression (the image may become blurry) (default: 0) |
 
-## Kết quả trả về
+## Returns
 
-API trả về `Promise<OpenMediaPickerReturns>` chứa kết quả trả về.
+The API returns `Promise<OpenMediaPickerReturns>` containing the result.
 
 ### OpenMediaPickerReturns
 
 | Property | Type | Required | Description |
 | --- | --- | --- | --- |
-| data | `string[] \| string` | No | Mặc định trả về mảng đường dẫn file tạm trên thiết bị.  Nếu truyền **serverUploadUrl** thì data là toàn bộ nội dung trả về của server upload media. |
+| data | `string[] \| string` | No | By default, returns an array of temporary file paths on the device.  If **serverUploadUrl** is passed, data is the entire content returned by the media upload server. |
 
-## Upload lên server
+## Upload to the server
 
 > **Note**
 >
-> Với các phiên bản SDK và Zalo không hỗ trợ tính năng [LFS](https://docs.zaloplatforms.com/docs/MA/api/lfs/localFileSystem), cần upload media lên server qua tham số **serverUploadUrl**.
+> With SDK and Zalo versions that do not support the [LFS](https://docs.zaloplatforms.com/docs/MA/api/lfs/localFileSystem) feature, media must be uploaded to the server via the **serverUploadUrl** parameter.
 
-Media sau khi chọn sẽ được tải lên server của bạn dưới dạng dữ liệu `multipart/form-data`, `fieldname=file`.
+After selection, the media is uploaded to your server as `multipart/form-data` data with `fieldname=file`.
 
 ### Server
 
-Server phải cung cấp một api dùng để upload media với method `POST` và trả về kết quả dạng `JSON`. Kết quả trả về phải chứa trường `error` với các giá trị:
+The server must provide an api for uploading media with the `POST` method and return the result as `JSON`. The returned result must contain an `error` field with the following values:
 
-- 0: Tải lên thành công
-- Khác 0: Tải lên thất bại
+- 0: Upload succeeded
+- Non-zero: Upload failed
 
-Một ví dụ về kết quả trả về của API dùng để upload media:
+An example of the result returned by the media upload API:
 
-- Tải lên thành công:
+- Upload succeeded:
 
 ```json
 {
@@ -113,7 +113,7 @@ Một ví dụ về kết quả trả về của API dùng để upload media:
 }
 ```
 
-- Tải lên thất bại:
+- Upload failed:
 
 ```json
 {
@@ -122,12 +122,12 @@ Một ví dụ về kết quả trả về của API dùng để upload media:
 }
 ```
 
-Tạo một server để upload media với 2 api:
+Create a server to upload media with 2 apis:
 
-- `POST` /upload/media - Dùng để upload media
-- `GET` /files/:name - Dùng để lấy media theo `name`
+- `POST` /upload/media - Used to upload media
+- `GET` /files/:name - Used to get media by `name`
 
-Tham khảo code mẫu dưới đây:
+Refer to the sample code below:
 
 ```js
 // Call all the required packages
@@ -209,21 +209,21 @@ import { openMediaPicker } from "zmp-sdk/apis";
 openMediaPicker({
   type: "photo",
   serverUploadUrl: "https://<your-domain-api>/upload/media",
-  compressLevel: 2, //Tùy chọn nếu cần nén ảnh
+  compressLevel: 2, //Optional if you need to compress the image
   success: (res) => {
-    // xử lý khi gọi api thành công
+    // handle the api call success
     const { data } = res;
     const result = JSON.parse(data);
     console.log(result);
   },
   fail: (error) => {
-    // xử lý khi gọi api thất bại
+    // handle the api call failure
     console.log(error);
   },
 });
 ```
 
-Hoặc
+Or
 
 ```jsx
 import { openMediaPicker } from "zmp-sdk/apis";
@@ -233,12 +233,12 @@ const pickMedia = async () => {
     const { data } = await openMediaPicker({
       type: "photo",
       serverUploadUrl: "https://<your-domain-api>/upload/media",
-      compressLevel: 2, //Tùy chọn nếu cần nén ảnh
+      compressLevel: 2, //Optional if you need to compress the image
     });
     const result = JSON.parse(data);
     console.log(result);
   } catch (error) {
-    // xử lý khi gọi api thất bại
+    // handle the api call failure
     console.log(error);
   }
 };

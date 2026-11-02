@@ -4,9 +4,9 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Các sự kiện từ camera
+Events from the camera
 
-- **OnFrameCallback**: Sự kiện trả về frame ([PhotoFrame](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/takePhoto#photoframe-object)) theo thời gian thực từ camera.
+- **OnFrameCallback**: Event that returns a frame ([PhotoFrame](https://docs.zaloplatforms.com/docs/MA/api/media/camera/cameraContext/takePhoto#photoframe-object)) in real time from the camera.
 
 ```js
 import api, { CameraEvents, PhotoFrame } from "zmp-sdk";
@@ -19,7 +19,7 @@ camera.on(CameraEvents.OnFrameCallback, (data: PhotoFrame) => {
 //...camera.start
 ```
 
-- **OnStartCallback**: Sự kiện bắt đầu streaming từ camera.
+- **OnStartCallback**: Event for when streaming from the camera starts.
 
 ```js
 import api, { CameraEvents } from "zmp-sdk";
@@ -32,7 +32,7 @@ camera.on(CameraEvents.OnStartCallback, () => {
 //...camera.start
 ```
 
-- **OnStopCallback**: Sự kiện kết thúc streaming từ camera.
+- **OnStopCallback**: Event for when streaming from the camera ends.
 
 ```js
 import api, { CameraEvents } from "zmp-sdk";

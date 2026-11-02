@@ -1,4 +1,4 @@
-# Tổng quan về local file
+# Local file overview
 
 > Source: https://docs.zaloplatforms.com/docs/MA/api/lfs/localFileSystem
 > Last updated: 22/12/2025
@@ -6,9 +6,9 @@
 
 > **Info**
 >
-> Để kiểm tra LFS có được hỗ trợ hay không, vui lòng sử dụng API [isSupportLFS](https://docs.zaloplatforms.com/docs/MA/api/lfs/isSupportLFS).
+> To check whether LFS is supported, please use the [isSupportLFS](https://docs.zaloplatforms.com/docs/MA/api/lfs/isSupportLFS) API.
 
-Trong quá trình sử dụng các API (vd: [openMediaPicker](https://docs.zaloplatforms.com/docs/MA/api/media/file/openMediaPicker), [saveFile](https://docs.zaloplatforms.com/docs/MA/api/lfs/saveFile)) sẽ sinh ra các local file (file cục bộ). Dựa vào mục đích sử dụng, local file được chia làm 2 loại sau:
+During the use of APIs (e.g. [openMediaPicker](https://docs.zaloplatforms.com/docs/MA/api/media/file/openMediaPicker), [saveFile](https://docs.zaloplatforms.com/docs/MA/api/lfs/saveFile)), local files are generated. Based on the purpose of use, local files are divided into the following 2 types:
 
 •
 Local cache file:
@@ -17,7 +17,7 @@ Format:
 - Android: `https://miniprogram/MPStorage/LFS/caches/[file name+extension]`
 - iOS: `miniappres://miniprogram/MPStorage/LFS/caches/[file name+extension]`
 
-File sinh ra khi gọi API như [openMediaPicker](https://docs.zaloplatforms.com/docs/MA/api/media/file/openMediaPicker). Các file này được lưu tạm thời và sẽ được xóa khi app khởi động lại. Nếu app có nhu cầu lưu lại file để sử dụng cho lần sau thì dùng api [saveFile](https://docs.zaloplatforms.com/docs/MA/api/lfs/saveFile) để chuyển thành local data file.
+Files generated when calling APIs such as [openMediaPicker](https://docs.zaloplatforms.com/docs/MA/api/media/file/openMediaPicker). These files are stored temporarily and will be deleted when the app restarts. If the app needs to keep a file for later use, use the [saveFile](https://docs.zaloplatforms.com/docs/MA/api/lfs/saveFile) API to convert it into a local data file.
 
 •
 Local data file:
@@ -26,4 +26,4 @@ Format:
 - Android: `https://miniprogram/MPStorage/LFS/data/[file name+extension]`
 - iOS: `miniappres://miniprogram/MPStorage/LFS/data/[file name+extension]`
 
-File sinh ra khi gọi API [saveFile](https://docs.zaloplatforms.com/docs/MA/api/lfs/saveFile) để tải file từ internet hoặc file tạm (local cache) về vùng nhớ cục bộ (local data). Dung lượng lưu trữ tối đa cho local data files là 10MB cho mỗi ứng dụng. Quá giới hạn này sẽ báo lỗi -300. App chủ động việc xóa bớt file không cần thiết để giải phóng dung lượng lưu trữ bằng API [removeSavedFile](https://docs.zaloplatforms.com/docs/MA/api/lfs/removeSavedFile).
+Files generated when calling the [saveFile](https://docs.zaloplatforms.com/docs/MA/api/lfs/saveFile) API to download files from the internet or temporary files (local cache) to local storage (local data). The maximum storage capacity for local data files is 10MB per app. Exceeding this limit will report error -300. The app proactively removes unnecessary files to free up storage by using the [removeSavedFile](https://docs.zaloplatforms.com/docs/MA/api/lfs/removeSavedFile) API.

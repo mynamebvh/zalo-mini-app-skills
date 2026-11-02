@@ -4,12 +4,12 @@
 > Last updated: 28/10/2026
 > Supported from: SDK 2.39.0
 
-Tạm dừng streaming
+Pause streaming
 
 ### StreamType
 
 - **VIDEO**: Stream Camera
-- **AUDIO**: Stream Micro
+- **AUDIO**: Stream Microphone
 
 ```js
 import React, { useEffect, useRef } from "react";
