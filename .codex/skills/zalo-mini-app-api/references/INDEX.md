@@ -159,8 +159,8 @@
 ### Zalo APIs
 
 - [addRating](zalo/addRating.md) — API that opens the app rating dialog, supporting the recording of user feedback ratings about the quality of the Mini App.
-- [createShortcut](zalo/createShortcut.md) — API cho phép ứng dụng tạo shortcut trên màn hình chờ.
-- [favoriteApp](zalo/favoriteApp.md) — API thêm ứng dụng vào danh sách ưa thích của người dùng ở Zalo Mini Apps Store.
+- [createShortcut](zalo/createShortcut.md) — API that allows the app to create a shortcut on the home screen.
+- [favoriteApp](zalo/favoriteApp.md) — API that adds the app to the user's favorites list in the Zalo Mini Apps Store.
 - [followOA](zalo/followOA.md) — API that requests following an Official Account. When the API is called, a notification is displayed.
 - [interactOA](zalo/interactOA.md) — API that requests that the user allow sending notifications through an Official Account. The API only displays a notification when permission needs to be requested from the user. Note: to help Mini App developers use the permission request flow effectively and in line with [section 3.3.4 of the Zalo Mini App policy](https://mini.zalo.me/documents/zalo-mini-app-developer-program-agreement/#33-api-quy%E1%BB%81n-truy-c%E1%BA%ADp). The Mini App Team has provided some experience design suggestions as shown below. Developers need to explain clearly and visually the purpose of the permission request so that users can easily understand and agree to provide information.
 - [minimizeApp](zalo/minimizeApp.md) — API that proactively minimizes the app. When the API is called, the Mini App is minimized into a floating icon at the corner of the screen, allowing users to temporarily use other Zalo features and return to your Mini App without reloading from the beginning.
